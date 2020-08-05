@@ -1,0 +1,10 @@
+# OSX system
+.DS_Store
+
+# Output dir
+build/
+
+# CLion
+.idea/
+cmake-build-debug/
+*.iml
