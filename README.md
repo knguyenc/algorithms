@@ -54,20 +54,20 @@ Quick links to implemented data structures and algorithms.
 
 **Data Structures**
 
-- [Linked lists](https://github.com/knguyenc/algorithms/tree/master/datastructures/linked_lists)
-  - [Singly linked list](https://github.com/knguyenc/algorithms/blob/master/datastructures/linked_lists/singly_linked_list.h)
-  - [Doubly linked list](https://github.com/knguyenc/algorithms/blob/master/datastructures/linked_lists/doubly_linked_list.h)
-  - [Circularly linked list](https://github.com/knguyenc/algorithms/blob/master/datastructures/linked_lists/circularly_linked_list.h)
-- [Heaps](https://github.com/knguyenc/algorithms/tree/master/datastructures/heaps)
-  - [Max heap](https://github.com/knguyenc/algorithms/blob/master/datastructures/heaps/max_heap.h)
-  - [Min heap](https://github.com/knguyenc/algorithms/blob/master/datastructures/heaps/min_heap.h)
-- [Stacks](https://github.com/knguyenc/algorithms/tree/master/datastructures/stacks)
-  - [Stack](https://github.com/knguyenc/algorithms/blob/master/datastructures/stacks/stack.h)
-- [Queues](https://github.com/knguyenc/algorithms/tree/master/datastructures/queues)
-  - [Queue](https://github.com/knguyenc/algorithms/blob/master/datastructures/queues/queue.h)
-  - [Deque](https://github.com/knguyenc/algorithms/blob/master/datastructures/queues/deque.h)
-  - [Max priority queue](https://github.com/knguyenc/algorithms/blob/master/datastructures/queues/max_priority_queue.h)
-  - [Min priority queue](https://github.com/knguyenc/algorithms/blob/master/datastructures/queues/min_priority_queue.h)
+- [Linked lists](https://github.com/knguyenc/algorithms/tree/master/data_structures/linked_lists)
+  - [Singly linked list](https://github.com/knguyenc/algorithms/blob/master/data_structures/linked_lists/singly_linked_list.h)
+  - [Doubly linked list](https://github.com/knguyenc/algorithms/blob/master/data_structures/linked_lists/doubly_linked_list.h)
+  - [Circularly linked list](https://github.com/knguyenc/algorithms/blob/master/data_structures/linked_lists/circularly_linked_list.h)
+- [Heaps](https://github.com/knguyenc/algorithms/tree/master/data_structures/heaps)
+  - [Max heap](https://github.com/knguyenc/algorithms/blob/master/data_structures/heaps/max_heap.h)
+  - [Min heap](https://github.com/knguyenc/algorithms/blob/master/data_structures/heaps/min_heap.h)
+- [Stacks](https://github.com/knguyenc/algorithms/tree/master/data_structures/stacks)
+  - [Stack](https://github.com/knguyenc/algorithms/blob/master/data_structures/stacks/stack.h)
+- [Queues](https://github.com/knguyenc/algorithms/tree/master/data_structures/queues)
+  - [Queue](https://github.com/knguyenc/algorithms/blob/master/data_structures/queues/queue.h)
+  - [Deque](https://github.com/knguyenc/algorithms/blob/master/data_structures/queues/deque.h)
+  - [Max priority queue](https://github.com/knguyenc/algorithms/blob/master/data_structures/queues/max_priority_queue.h)
+  - [Min priority queue](https://github.com/knguyenc/algorithms/blob/master/data_structures/queues/min_priority_queue.h)
 
 **Sorting Algorithms**
 
