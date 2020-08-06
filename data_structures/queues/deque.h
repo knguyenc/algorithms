@@ -40,13 +40,13 @@ bool Deque<T>::IsEmpty() const {
 
 template <class T>
 const T &Deque<T>::Front() const {
-  if (IsEmpty()) throw std::runtime_error("Deque is empty, can not get front");
+  if (IsEmpty()) throw std::runtime_error("Deque underflow, can not get front.");
   return list_.First();
 }
 
 template <class T>
 const T &Deque<T>::Back() const {
-  if (IsEmpty()) throw std::runtime_error("Deque is empty, can not get back");
+  if (IsEmpty()) throw std::runtime_error("Deque underflow, can not get back.");
   return list_.Last();
 }
 
@@ -64,7 +64,7 @@ void Deque<T>::InsertBack(const T &e) {
 
 template <class T>
 T Deque<T>::RemoveFront() {
-  if (IsEmpty()) throw std::runtime_error("Deque is empty, can not remove");
+  if (IsEmpty()) throw std::runtime_error("Deque underflow, can not remove front.");
   T result = list_.RemoveFirst();
   size_--;
   return result;
@@ -72,7 +72,7 @@ T Deque<T>::RemoveFront() {
 
 template <class T>
 T Deque<T>::RemoveBack() {
-  if (IsEmpty()) throw std::runtime_error("Deque is empty, can not remove");
+  if (IsEmpty()) throw std::runtime_error("Deque underflow, can not remove back.");
   T result = list_.RemoveLast();
   size_--;
   return result;

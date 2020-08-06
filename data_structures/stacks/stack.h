@@ -39,19 +39,19 @@ bool Stack<T>::IsEmpty() const {
 
 template <class T>
 const T &Stack<T>::Top() const {
-  if (IsEmpty()) throw std::runtime_error("Stack is empty, can not get top");
+  if (IsEmpty()) throw std::runtime_error("Stack underflow, can not get top.");
   return data_[top_];
 }
 
 template <class T>
 void Stack<T>::Push(const T &e) {
-  if (Size() == cap_) throw std::runtime_error("Stack is full");
+  if (Size() == cap_) throw std::runtime_error("Stack overflow");
   data_[++top_] = e;
 }
 
 template <class T>
 T Stack<T>::Pop() {
-  if (IsEmpty()) throw std::runtime_error("Stack is empty, can not pop");
+  if (IsEmpty()) throw std::runtime_error("Stack underflow, can not pop");
   T result = data_[top_];
   --top_;
   return result;

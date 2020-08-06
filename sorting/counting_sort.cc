@@ -4,17 +4,9 @@ namespace algorithms {
 namespace sorting {
 
 template <class T, size_t N>
-bool CheckCountingSortInputArray(T (&array)[N]) {
-  if (*(typeid(T).name()) != 'j' && *(typeid(T).name()) != 'h') {
-    std::cout << "Only accept non-negative integer or character array." << std::endl;
-    return false;
-  }
-  return true;
-}
-
-template <class T, size_t N>
 void CountingSort(T (&array)[N], T key) {
-  if (!CheckCountingSortInputArray(array)) return;
+  if (!std::is_same<T, unsigned int>::value && !std::is_same<T, unsigned char>::value)
+    throw std::runtime_error("Only accept non-negative integer or character array.");
   T *output = new T[N];
   T *auxiliary = new T[key + 1];
   for (unsigned int i = 0; i < key + 1; i++)
@@ -37,7 +29,7 @@ void CountingSort(T (&array)[N], T key) {
 }  // namespace algorithms
 
 int main() {
-  unsigned int integers[11] = {6, 8, 10, 26, 9, 2, 40, 22, 5, 32, 3};
+  int integers[11] = {6, 8, 10, 26, 9, 2, 40, 22, 5, 32, 3};
   unsigned char chars[8] = {'d', 'g', 'a', 'b', 'j', 'y', 'h', 'k'};
 
   algorithms::sorting::CountingSort(integers, *(std::max_element(integers, integers + 11)));

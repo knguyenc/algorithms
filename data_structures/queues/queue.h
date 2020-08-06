@@ -41,13 +41,13 @@ bool Queue<T>::IsEmpty() const {
 
 template <class T>
 const T &Queue<T>::Front() const {
-  if (IsEmpty()) throw std::runtime_error("Queue is empty, can not get front");
+  if (IsEmpty()) throw std::runtime_error("Queue underflow, can not get front.");
   return data_[front_];
 }
 
 template <class T>
 void Queue<T>::Enqueue(const T &e) {
-  if (Size() == cap_) throw std::runtime_error("Queue is full");
+  if (Size() == cap_) throw std::runtime_error("Queue overflow.");
   int ps = (front_ + size_) % cap_;
   data_[ps] = e;
   size_++;
@@ -55,7 +55,7 @@ void Queue<T>::Enqueue(const T &e) {
 
 template <class T>
 T Queue<T>::Dequeue() {
-  if (IsEmpty()) throw std::runtime_error("Queue is empty, can not dequeue");
+  if (IsEmpty()) throw std::runtime_error("Queue underflow, can not dequeue.");
   T result = data_[front_];
   front_ = (front_ + 1) % sizeof(data_);
   size_--;

@@ -5,23 +5,12 @@ namespace algorithms {
 namespace sorting {
 
 template <class T, size_t N>
-bool CheckBucketSortInputArray(T (&array)[N]) {
-  if (*(typeid(T).name()) != 'f' && *(typeid(T).name()) != 'd') {
-    std::cout << "Only accept floating point number array." << std::endl;
-    return false;
-  }
-  for (T element : array) {
-    if (element < 0 || element >= 1) {
-      std::cout << "Only accept non-negative floating point number array in range [0, 1)." << std::endl;
-      return false;
-    }
-  }
-  return true;
-}
-
-template <class T, size_t N>
 void BucketSort(T (&array)[N]) {
-  if (!CheckBucketSortInputArray(array)) return;
+  if (!std::is_same<T, float>::value && !std::is_same<T, double>::value)
+    throw std::runtime_error("Only accept floating point number array.");
+  for (T element : array)
+    if (element < 0 || element >= 1)
+      throw std::runtime_error("Only accept non-negative floating point number array in range [0, 1).");
   std::vector<T> buckets[N];
   for (unsigned int i = 0; i < N; i++) {
     int bucket_index = N * array[i];
@@ -39,11 +28,16 @@ void BucketSort(T (&array)[N]) {
 }  // namespace algorithms
 
 int main() {
-  float floats[8] = {0.52f, 0.44f, 0.68f, 0.95f, 1.0f, 0.12f, 0.32f, 0.59f};
+  float floats[8] = {0.52f, 0.44f, 0.68f, 0.95f, 0.1f, 0.12f, 0.32f, 0.59f};
+  double doubles[8] = {0.52, 0.44, 0.68, 0.95, 0.1, 0.12, 0.32, 0.59};
 
   algorithms::sorting::BucketSort(floats);
-  std::cout << "Sorted integer array: ";
-  algorithms::sorting::PrintArray(floats);  // 0.7 1.2 3.2 4.4 5.2 5.9 6.8 9.5
+  std::cout << "Sorted float array: ";
+  algorithms::sorting::PrintArray(floats);  // 0.1 0.12 0.32 0.44 0.52 0.59 0.68 0.95
+
+  algorithms::sorting::BucketSort(doubles);
+  std::cout << "Sorted double array: ";
+  algorithms::sorting::PrintArray(doubles);  // 0.1 0.12 0.32 0.44 0.52 0.59 0.68 0.95
 
   return 0;
 }
