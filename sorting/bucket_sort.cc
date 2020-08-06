@@ -7,7 +7,7 @@ namespace sorting {
 template <class T, size_t N>
 bool CheckBucketSortInputArray(T (&array)[N]) {
   if (*(typeid(T).name()) != 'f' && *(typeid(T).name()) != 'd') {
-    std::cout << "Only accept non-negative floating point number array." << std::endl;
+    std::cout << "Only accept floating point number array." << std::endl;
     return false;
   }
   for (T element : array) {
