@@ -10,6 +10,7 @@ int main() {
   std::cout << "Empty: " << stack.IsEmpty() << std::endl;
   std::cout << "Top: " << stack.Top() << std::endl;
   std::cout << "Pop: " << stack.Pop() << std::endl;
+  std::cout << "Top: " << stack.Top() << std::endl;
   std::cout << "Pop: " << stack.Pop() << std::endl;
 
   return 0;

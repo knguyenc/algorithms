@@ -25,14 +25,14 @@ class Heap {
   virtual T Remove(int) = 0;
   void Swap(int i, int j);
   bool IsEmpty() { return size_ == 0; }
-  bool IsFull() { return size_ == cap_; }
+  bool IsFull() { return size_ == capacity_; }
   friend std::ostream &operator<< <T>(std::ostream &out, const Heap &heap);
 
  protected:
   enum { DEFAULT_CAPACITY = 10 };
   T *data_;
   int size_;
-  int cap_;
+  int capacity_;
 
  protected:
   int Parent(int index) const { return (index - 1) / 2; }
@@ -46,10 +46,10 @@ class Heap {
 };
 
 template <class T>
-Heap<T>::Heap() : data_(new T[DEFAULT_CAPACITY]), size_(0), cap_(DEFAULT_CAPACITY) {}
+Heap<T>::Heap() : data_(new T[DEFAULT_CAPACITY]), size_(0), capacity_(DEFAULT_CAPACITY) {}
 
 template <class T>
-Heap<T>::Heap(int capacity) : data_(new T[capacity]), size_(0), cap_(capacity) {}
+Heap<T>::Heap(int capacity) : data_(new T[capacity]), size_(0), capacity_(capacity) {}
 
 template <class T>
 Heap<T>::~Heap() {
