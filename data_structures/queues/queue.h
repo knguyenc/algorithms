@@ -8,58 +8,71 @@ namespace queues {
 
 template <class T>
 class Queue {
-  enum { CAPACITY = 100 };
+  enum { DEFAULT_CAPACITY = 100 };
 
  public:
   Queue();
+  explicit Queue(int capacity);
+  ~Queue();
   int Size() const;
   bool IsEmpty() const;
-  const T &Front() const noexcept(false);
-  void Enqueue(const T &e) noexcept(false);
-  T Dequeue() noexcept(false);
+  bool IsFull() const;
+  T &Head() const;
+  void Enqueue(const T &e);
+  T Dequeue();
 
  private:
   T *data_;
-  int cap_;
-  int front_;
-  int size_;
+  int capacity_;
+  int head_;
+  int tail_;
 };
 
 template <class T>
-Queue<T>::Queue()
-    : data_(new T[CAPACITY]), cap_(CAPACITY), front_(0), size_(0) {}
+Queue<T>::Queue() : data_(new T[DEFAULT_CAPACITY]), capacity_(DEFAULT_CAPACITY), head_(0), tail_(0) {}
+
+template <class T>
+Queue<T>::Queue(int capacity) : data_(new T[capacity]), capacity_(capacity), head_(0), tail_(0) {}
+
+template <class T>
+Queue<T>::~Queue() {
+  delete[] data_;
+}
 
 template <class T>
 int Queue<T>::Size() const {
-  return size_;
+  return (head_ < tail_) ? tail_ - head_ : capacity_ - head_ + tail_;
 }
 
 template <class T>
 bool Queue<T>::IsEmpty() const {
-  return (size_ == 0);
+  return head_ == tail_;
 }
 
 template <class T>
-const T &Queue<T>::Front() const {
-  if (IsEmpty()) throw std::runtime_error("Queue underflow, can not get front.");
-  return data_[front_];
+bool Queue<T>::IsFull() const {
+  return head_ == tail_ + 1;
+}
+
+template <class T>
+T &Queue<T>::Head() const {
+  if (IsEmpty()) throw std::runtime_error("Queue underflow, can not get head.");
+  return data_[head_];
 }
 
 template <class T>
 void Queue<T>::Enqueue(const T &e) {
-  if (Size() == cap_) throw std::runtime_error("Queue overflow.");
-  int ps = (front_ + size_) % cap_;
-  data_[ps] = e;
-  size_++;
+  if (IsFull()) throw std::runtime_error("Queue overflow, can not enqueue.");
+  data_[tail_] = e;
+  tail_ = (capacity_ == tail_ + 1) ? 0 : tail_ + 1;
 }
 
 template <class T>
 T Queue<T>::Dequeue() {
   if (IsEmpty()) throw std::runtime_error("Queue underflow, can not dequeue.");
-  T result = data_[front_];
-  front_ = (front_ + 1) % sizeof(data_);
-  size_--;
-  return result;
+  T removed = data_[head_];
+  head_ = (capacity_ == head_ + 1) ? 0 : head_ + 1;
+  return removed;
 }
 
 }  // namespace queues

@@ -12,8 +12,11 @@ class Stack {
 
  public:
   Stack();
+  explicit Stack(int capacity);
+  ~Stack();
   int Size() const;
   bool IsEmpty() const;
+  bool IsFull() const;
   T &Top() const;
   void Push(const T &e);
   T Pop();
@@ -28,6 +31,14 @@ template <class T>
 Stack<T>::Stack() : data_(new T[DEFAULT_CAPACITY]), capacity_(DEFAULT_CAPACITY), top_(-1) {}
 
 template <class T>
+Stack<T>::Stack(int capacity) : data_(new T[capacity]), capacity_(capacity), top_(-1) {}
+
+template <class T>
+Stack<T>::~Stack() {
+  delete[] data_;
+}
+
+template <class T>
 int Stack<T>::Size() const {
   return top_ + 1;
 }
@@ -38,6 +49,11 @@ bool Stack<T>::IsEmpty() const {
 }
 
 template <class T>
+bool Stack<T>::IsFull() const {
+  return Size() == capacity_;
+}
+
+template <class T>
 T &Stack<T>::Top() const {
   if (IsEmpty()) throw std::runtime_error("Stack underflow, can not get top.");
   return data_[top_];
@@ -45,7 +61,7 @@ T &Stack<T>::Top() const {
 
 template <class T>
 void Stack<T>::Push(const T &e) {
-  if (Size() == capacity_) throw std::runtime_error("Stack overflow");
+  if (IsFull()) throw std::runtime_error("Stack overflow, can not push.");
   data_[++top_] = e;
 }
 

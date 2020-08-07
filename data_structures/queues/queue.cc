@@ -8,8 +8,9 @@ int main() {
   queue.Enqueue(6);
   std::cout << "Size: " << queue.Size() << std::endl;
   std::cout << "Empty: " << queue.IsEmpty() << std::endl;
-  std::cout << "Front: " << queue.Front() << std::endl;
+  std::cout << "Head: " << queue.Head() << std::endl;
   std::cout << "Dequeue: " << queue.Dequeue() << std::endl;
+  std::cout << "Head: " << queue.Head() << std::endl;
   std::cout << "Dequeue: " << queue.Dequeue() << std::endl;
 
   return 0;
