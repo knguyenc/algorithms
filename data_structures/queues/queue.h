@@ -41,7 +41,7 @@ Queue<T>::~Queue() {
 
 template <class T>
 int Queue<T>::Size() const {
-  return (head_ < tail_) ? tail_ - head_ : capacity_ - head_ + tail_;
+  return (head_ > tail_) ? capacity_ - head_ + tail_ : tail_ - head_;
 }
 
 template <class T>
