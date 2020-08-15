@@ -23,7 +23,7 @@ class DoublyLinkedList {
  private:
   class Node {
    private:
-    T element_;
+    T data_;
     Node *prev_;
     Node *next_;
     friend class DoublyLinkedList;
@@ -67,15 +67,15 @@ bool DoublyLinkedList<T>::IsEmpty() const {
 template <class T>
 const T &DoublyLinkedList<T>::First() const {
   if (IsEmpty())
-    throw std::runtime_error("List is empty, can not get the first element_");
-  return header_->next_->element_;
+    throw std::runtime_error("List is empty, can not get the first data_");
+  return header_->next_->data_;
 }
 
 template <class T>
 const T &DoublyLinkedList<T>::Last() const {
   if (IsEmpty())
-    throw std::runtime_error("List is empty, can not get the last element_");
-  return trailer_->prev_->element_;
+    throw std::runtime_error("List is empty, can not get the last data_");
+  return trailer_->prev_->data_;
 }
 
 template <class T>
@@ -93,7 +93,7 @@ void DoublyLinkedList<T>::InsertLast(const T &e) {
 template <class T>
 T DoublyLinkedList<T>::RemoveFirst() {
   if (IsEmpty()) throw std::runtime_error("List is empty, can not remove");
-  T result = header_->next_->element_;
+  T result = header_->next_->data_;
   Remove(header_->next_);
   size_--;
   return result;
@@ -102,7 +102,7 @@ T DoublyLinkedList<T>::RemoveFirst() {
 template <class T>
 T DoublyLinkedList<T>::RemoveLast() {
   if (IsEmpty()) throw std::runtime_error("List is empty, can not remove");
-  T result = trailer_->prev_->element_;
+  T result = trailer_->prev_->data_;
   Remove(trailer_->prev_);
   size_--;
   return result;
@@ -111,7 +111,7 @@ T DoublyLinkedList<T>::RemoveLast() {
 template <class T>
 void DoublyLinkedList<T>::Insert(Node *n, const T &e) {
   Node *node = new Node;
-  node->element_ = e;
+  node->data_ = e;
   node->next_ = n;
   node->prev_ = n->prev_;
   n->prev_->next_ = node;

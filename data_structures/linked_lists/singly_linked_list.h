@@ -11,7 +11,7 @@ class SinglyLinkedList {
  private:
   class Node {
    private:
-    T element_;
+    T data_;
     Node *next_;
     friend class SinglyLinkedList;
   };
@@ -24,6 +24,9 @@ class SinglyLinkedList {
   const T &First() const;
   void InsertFirst(const T &e);
   T RemoveFirst();
+
+ private:
+  Node *Search(const T &e) const;
 
  private:
   Node *head_;
@@ -50,15 +53,14 @@ bool SinglyLinkedList<T>::IsEmpty() const {
 
 template <class T>
 const T &SinglyLinkedList<T>::First() const {
-  if (IsEmpty())
-    throw std::runtime_error("List is empty, can not get the first element");
-  return head_->element_;
+  if (IsEmpty()) throw std::runtime_error("List is empty, can not get the first element");
+  return head_->data_;
 }
 
 template <class T>
 void SinglyLinkedList<T>::InsertFirst(const T &e) {
   Node *node = new Node;
-  node->element_ = e;
+  node->data_ = e;
   node->next_ = head_;
   head_ = node;
   size_++;
@@ -68,11 +70,19 @@ template <class T>
 T SinglyLinkedList<T>::RemoveFirst() {
   if (IsEmpty()) throw std::runtime_error("List is empty, can not remove");
   Node *old = head_;
-  T result = old->element_;
+  T result = old->data_;
   head_ = head_->next_;
   delete old;
   size_--;
   return result;
+}
+
+template <class T>
+typename SinglyLinkedList<T>::Node *SinglyLinkedList<T>::Search(const T &e) const {
+  Node *temp = head_;
+  while (temp != NULL && temp->data_ != e)
+    temp = temp->next_;
+  return temp;
 }
 
 }  // namespace linked_lists

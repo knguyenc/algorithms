@@ -20,10 +20,10 @@ class CircularlyLinkedList {
   void InsertLast(const T &e);
   T RemoveFirst();
 
- private:
+ public:
   class Node {
    private:
-    T element_;
+    T data_;
     Node *next_;
     friend class CircularlyLinkedList;
   };
@@ -53,14 +53,14 @@ template <class T>
 const T &CircularlyLinkedList<T>::First() const {
   if (IsEmpty())
     throw std::runtime_error("List is empty, can not get the first element");
-  return tail_->next_->element_;
+  return tail_->next_->data_;
 }
 
 template <class T>
 const T &CircularlyLinkedList<T>::Last() const {
   if (IsEmpty())
     throw std::runtime_error("List is empty, can not get the last element");
-  return tail_->element_;
+  return tail_->data_;
 }
 
 template <class T>
@@ -71,7 +71,7 @@ void CircularlyLinkedList<T>::Rotate() {
 template <class T>
 void CircularlyLinkedList<T>::InsertFirst(const T &e) {
   Node *n = new Node;
-  n->element_ = e;
+  n->data_ = e;
   if (IsEmpty()) {
     tail_ = n;
     tail_->next_ = tail_;
@@ -92,7 +92,7 @@ template <class T>
 T CircularlyLinkedList<T>::RemoveFirst() {
   if (IsEmpty()) throw std::runtime_error("List is empty, can not remove");
   Node *old = tail_->next_;
-  T result = old->element_;
+  T result = old->data_;
   if (old == tail_) {
     tail_ = NULL;
   } else {
