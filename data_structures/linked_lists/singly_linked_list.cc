@@ -6,7 +6,9 @@ int main() {
   std::cout << "Empty: " << sl.IsEmpty() << std::endl;
   std::cout << sl;
   sl.Insert(8);
+  sl.Insert(12);
   sl.Insert(6);
+  sl.Insert(10);
   std::cout << "Size: " << sl.Size() << std::endl;
   std::cout << "Empty: " << sl.IsEmpty() << std::endl;
   std::cout << sl;

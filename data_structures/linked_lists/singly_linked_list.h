@@ -22,7 +22,6 @@ class SinglyLinkedList {
     friend class SinglyLinkedList;
 
    public:
-    Node() : data_(NULL), next_(NULL) {}
     explicit Node(const T &data) : data_(data), next_(NULL) {}
   };
 
@@ -47,6 +46,7 @@ SinglyLinkedList<T>::SinglyLinkedList() : head_(NULL), size_(0) {}
 template <class T>
 SinglyLinkedList<T>::~SinglyLinkedList() {
   while (!IsEmpty()) Remove(head_->data_);
+  delete head_;
 }
 
 template <class T>
@@ -92,7 +92,7 @@ T SinglyLinkedList<T>::Remove(const T &e) {
     old = old->next_;
   }
   if (old == NULL) throw std::runtime_error("Node is not exist in this list");
-  T result = old->data_;
+  T removed = old->data_;
   if (old == head_) {
     head_ = head_->next_;
   } else {
@@ -100,7 +100,7 @@ T SinglyLinkedList<T>::Remove(const T &e) {
   }
   delete old;
   size_--;
-  return result;
+  return removed;
 }
 
 template <class T>
