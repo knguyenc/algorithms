@@ -10,8 +10,6 @@ int main() {
   dl.InsertLast(10);
   std::cout << "Size: " << dl.Size() << std::endl;
   std::cout << "Empty: " << dl.IsEmpty() << std::endl;
-  std::cout << "First: " << dl.First() << std::endl;
-  std::cout << "Last: " << dl.Last() << std::endl;
   std::cout << "Remove first: " << dl.RemoveFirst() << std::endl;
   std::cout << "Remove last: " << dl.RemoveLast() << std::endl;
 

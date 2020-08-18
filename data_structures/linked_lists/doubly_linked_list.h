@@ -9,25 +9,29 @@ namespace linked_lists {
 template <class T>
 class DoublyLinkedList {
  public:
-  DoublyLinkedList();
-  ~DoublyLinkedList();
-  int Size() const;
-  bool IsEmpty() const;
-  const T &First() const;
-  const T &Last() const;
-  void InsertFirst(const T &e);
-  void InsertLast(const T &e);
-  T RemoveFirst();
-  T RemoveLast();
-
- private:
   class Node {
    private:
     T data_;
     Node *prev_;
     Node *next_;
     friend class DoublyLinkedList;
+
+   public:
+    Node() : data_(NULL), prev_(NULL), next_(NULL) {}
+    explicit Node(const T &data) : data_(data), prev_(NULL), next_(NULL) {}
   };
+
+ public:
+  DoublyLinkedList();
+  ~DoublyLinkedList();
+  int Size() const;
+  bool IsEmpty() const;
+  void InsertFirst(const T &e);
+  void InsertLast(const T &e);
+  T RemoveFirst();
+  T RemoveLast();
+
+ private:
   Node *header_;
   Node *trailer_;
   int size_;
@@ -39,8 +43,8 @@ class DoublyLinkedList {
 
 template <class T>
 DoublyLinkedList<T>::DoublyLinkedList() : size_(0) {
-  header_ = new Node;
-  trailer_ = new Node;
+  header_ = new Node();
+  trailer_ = new Node();
   header_->prev_ = NULL;
   header_->next_ = trailer_;
   trailer_->prev_ = header_;
@@ -62,20 +66,6 @@ int DoublyLinkedList<T>::Size() const {
 template <class T>
 bool DoublyLinkedList<T>::IsEmpty() const {
   return (size_ == 0);
-}
-
-template <class T>
-const T &DoublyLinkedList<T>::First() const {
-  if (IsEmpty())
-    throw std::runtime_error("List is empty, can not get the first data_");
-  return header_->next_->data_;
-}
-
-template <class T>
-const T &DoublyLinkedList<T>::Last() const {
-  if (IsEmpty())
-    throw std::runtime_error("List is empty, can not get the last data_");
-  return trailer_->prev_->data_;
 }
 
 template <class T>

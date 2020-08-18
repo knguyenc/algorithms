@@ -7,13 +7,23 @@ namespace data_structures {
 namespace linked_lists {
 
 template <class T>
+class SinglyLinkedList;
+
+template <class T>
+std::ostream &operator<<(std::ostream &out, const SinglyLinkedList<T> &list);
+
+template <class T>
 class SinglyLinkedList {
- private:
+ public:
   class Node {
    private:
     T data_;
     Node *next_;
     friend class SinglyLinkedList;
+
+   public:
+    Node() : data_(NULL), next_(NULL) {}
+    explicit Node(const T &data) : data_(data), next_(NULL) {}
   };
 
  public:
@@ -21,12 +31,10 @@ class SinglyLinkedList {
   ~SinglyLinkedList();
   int Size() const;
   bool IsEmpty() const;
-  const T &First() const;
-  void InsertFirst(const T &e);
-  T RemoveFirst();
-
- private:
-  Node *Search(const T &e) const;
+  bool Search(const T &e) const;
+  void Insert(const T &e);
+  T Remove(const T &e);
+  friend std::ostream &operator<< <T>(std::ostream &out, const SinglyLinkedList &list);
 
  private:
   Node *head_;
@@ -38,7 +46,7 @@ SinglyLinkedList<T>::SinglyLinkedList() : head_(NULL), size_(0) {}
 
 template <class T>
 SinglyLinkedList<T>::~SinglyLinkedList() {
-  while (!IsEmpty()) RemoveFirst();
+  while (!IsEmpty()) Remove(head_->data_);
 }
 
 template <class T>
@@ -52,37 +60,63 @@ bool SinglyLinkedList<T>::IsEmpty() const {
 }
 
 template <class T>
-const T &SinglyLinkedList<T>::First() const {
-  if (IsEmpty()) throw std::runtime_error("List is empty, can not get the first element");
-  return head_->data_;
+bool SinglyLinkedList<T>::Search(const T &e) const {
+  Node *temp = head_;
+  while (temp != NULL) {
+    if (temp->data_ == e) return true;
+    temp = temp->next_;
+  }
+  return false;
 }
 
 template <class T>
-void SinglyLinkedList<T>::InsertFirst(const T &e) {
-  Node *node = new Node;
-  node->data_ = e;
-  node->next_ = head_;
-  head_ = node;
+void SinglyLinkedList<T>::Insert(const T &e) {
+  Node *node = new Node(e);
+  if (IsEmpty()) {
+    head_ = node;
+  } else {
+    Node *temp = head_;
+    while (temp->next_ != NULL)
+      temp = temp->next_;
+    temp->next_ = node;
+  }
   size_++;
 }
 
 template <class T>
-T SinglyLinkedList<T>::RemoveFirst() {
+T SinglyLinkedList<T>::Remove(const T &e) {
   if (IsEmpty()) throw std::runtime_error("List is empty, can not remove");
-  Node *old = head_;
+  Node *old = head_, *prev;
+  while (old != NULL && old->data_ != e) {
+    prev = old;
+    old = old->next_;
+  }
+  if (old == NULL) throw std::runtime_error("Node is not exist in this list");
   T result = old->data_;
-  head_ = head_->next_;
+  if (old == head_) {
+    head_ = head_->next_;
+  } else {
+    prev->next_ = old->next_;
+  }
   delete old;
   size_--;
   return result;
 }
 
 template <class T>
-typename SinglyLinkedList<T>::Node *SinglyLinkedList<T>::Search(const T &e) const {
-  Node *temp = head_;
-  while (temp != NULL && temp->data_ != e)
-    temp = temp->next_;
-  return temp;
+std::ostream &operator<<(std::ostream &out, const SinglyLinkedList<T> &list) {
+  if (list.IsEmpty()) {
+    out << "Empty list";
+  } else {
+    typename SinglyLinkedList<T>::Node *temp = list.head_;
+    out << "List: ";
+    while (temp != NULL) {
+      out << temp->data_ << " ";
+      temp = temp->next_;
+    }
+  }
+  out << std::endl;
+  return out;
 }
 
 }  // namespace linked_lists
