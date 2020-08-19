@@ -22,6 +22,8 @@ add_executable(min_priority_queue data_structures/queues/min_priority_queue.cc)
 add_executable(max_heap data_structures/heaps/max_heap.cc)
 add_executable(min_heap data_structures/heaps/min_heap.cc)
 
+add_executable(binary_tree data_structures/trees/binary_tree.cc)
+
 add_executable(insertion_sort sorting/insertion_sort.cc)
 add_executable(bubble_sort sorting/bubble_sort.cc)
 add_executable(merge_sort sorting/merge_sort.cc)
