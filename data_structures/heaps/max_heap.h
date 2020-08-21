@@ -27,7 +27,7 @@ MaxHeap<T>::MaxHeap(const T (&array)[N]) {
   for (unsigned int i = 0; i < N; i++)
     this->data_[i] = array[i];
   this->size_ = N;
-  this->cap_ = N;
+  this->capacity_ = N;
   BuildHeap();
 }
 
@@ -38,7 +38,7 @@ MaxHeap<T>::MaxHeap(const T (&array)[N], int capacity) {
   for (unsigned int i = 0; i < N; i++)
     this->data_[i] = array[i];
   this->size_ = N;
-  this->cap_ = capacity;
+  this->capacity_ = capacity;
   BuildHeap();
 }
 

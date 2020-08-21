@@ -7,12 +7,6 @@ namespace data_structures {
 namespace linked_lists {
 
 template <class T>
-class CircularlyLinkedList;
-
-template <class T>
-std::ostream &operator<<(std::ostream &out, const CircularlyLinkedList<T> &list);
-
-template <class T>
 class CircularlyLinkedList {
  public:
   class Node {
@@ -34,7 +28,21 @@ class CircularlyLinkedList {
   bool Search(const T &e) const;
   void Insert(const T &e);
   T Remove(const T &e);
-  friend std::ostream &operator<< <T>(std::ostream &out, const CircularlyLinkedList &list);
+
+  friend std::ostream &operator<<(std::ostream &out, const CircularlyLinkedList &list) {
+    if (list.IsEmpty()) {
+      out << "Empty list";
+    } else {
+      typename CircularlyLinkedList::Node *temp = list.tail_->next_;
+      out << "List: ";
+      do {
+        out << temp->data_ << " ";
+        temp = temp->next_;
+      } while (temp != list.tail_->next_);
+    }
+    out << std::endl;
+    return out;
+  }
 
  private:
   Node *tail_;
@@ -110,22 +118,6 @@ T CircularlyLinkedList<T>::Remove(const T &e) {
   delete old;
   size_--;
   return removed;
-}
-
-template <class T>
-std::ostream &operator<<(std::ostream &out, const CircularlyLinkedList<T> &list) {
-  if (list.IsEmpty()) {
-    out << "Empty list";
-  } else {
-    typename CircularlyLinkedList<T>::Node *temp = list.tail_->next_;
-    out << "List: ";
-    do {
-      out << temp->data_ << " ";
-      temp = temp->next_;
-    } while (temp != list.tail_->next_);
-  }
-  out << std::endl;
-  return out;
 }
 
 }  // namespace linked_lists

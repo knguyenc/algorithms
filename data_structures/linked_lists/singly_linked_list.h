@@ -7,12 +7,6 @@ namespace data_structures {
 namespace linked_lists {
 
 template <class T>
-class SinglyLinkedList;
-
-template <class T>
-std::ostream &operator<<(std::ostream &out, const SinglyLinkedList<T> &list);
-
-template <class T>
 class SinglyLinkedList {
  public:
   class Node {
@@ -33,7 +27,21 @@ class SinglyLinkedList {
   bool Search(const T &e) const;
   void Insert(const T &e);
   T Remove(const T &e);
-  friend std::ostream &operator<< <T>(std::ostream &out, const SinglyLinkedList &list);
+
+  friend std::ostream &operator<<(std::ostream &out, const SinglyLinkedList &list) {
+    if (list.IsEmpty()) {
+      out << "Empty list";
+    } else {
+      typename SinglyLinkedList::Node *temp = list.head_;
+      out << "List: ";
+      while (temp != NULL) {
+        out << temp->data_ << " ";
+        temp = temp->next_;
+      }
+    }
+    out << std::endl;
+    return out;
+  }
 
  private:
   Node *head_;
@@ -101,22 +109,6 @@ T SinglyLinkedList<T>::Remove(const T &e) {
   delete old;
   size_--;
   return removed;
-}
-
-template <class T>
-std::ostream &operator<<(std::ostream &out, const SinglyLinkedList<T> &list) {
-  if (list.IsEmpty()) {
-    out << "Empty list";
-  } else {
-    typename SinglyLinkedList<T>::Node *temp = list.head_;
-    out << "List: ";
-    while (temp != NULL) {
-      out << temp->data_ << " ";
-      temp = temp->next_;
-    }
-  }
-  out << std::endl;
-  return out;
 }
 
 }  // namespace linked_lists

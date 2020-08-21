@@ -7,12 +7,6 @@ namespace data_structures {
 namespace linked_lists {
 
 template <class T>
-class DoublyLinkedList;
-
-template <class T>
-std::ostream &operator<<(std::ostream &out, const DoublyLinkedList<T> &list);
-
-template <class T>
 class DoublyLinkedList {
  public:
   class Node {
@@ -34,7 +28,21 @@ class DoublyLinkedList {
   bool Search(const T &e) const;
   void Insert(const T &e);
   T Remove(const T &e);
-  friend std::ostream &operator<< <T>(std::ostream &out, const DoublyLinkedList &list);
+
+  friend std::ostream &operator<<(std::ostream &out, const DoublyLinkedList &list) {
+    if (list.IsEmpty()) {
+      out << "Empty list";
+    } else {
+      typename DoublyLinkedList::Node *temp = list.head_;
+      out << "List: ";
+      while (temp != NULL) {
+        out << temp->data_ << " ";
+        temp = temp->next_;
+      }
+    }
+    out << std::endl;
+    return out;
+  }
 
  private:
   Node *head_;
@@ -103,22 +111,6 @@ T DoublyLinkedList<T>::Remove(const T &e) {
   delete old;
   size_--;
   return removed;
-}
-
-template <class T>
-std::ostream &operator<<(std::ostream &out, const DoublyLinkedList<T> &list) {
-  if (list.IsEmpty()) {
-    out << "Empty list";
-  } else {
-    typename DoublyLinkedList<T>::Node *temp = list.head_;
-    out << "List: ";
-    while (temp != NULL) {
-      out << temp->data_ << " ";
-      temp = temp->next_;
-    }
-  }
-  out << std::endl;
-  return out;
 }
 
 }  // namespace linked_lists

@@ -8,12 +8,6 @@ namespace data_structures {
 namespace heaps {
 
 template <class T>
-class Heap;
-
-template <class T>
-std::ostream &operator<<(std::ostream &out, const Heap<T> &heap);
-
-template <class T>
 class Heap {
  public:
   Heap();
@@ -26,7 +20,23 @@ class Heap {
   void Swap(int i, int j);
   bool IsEmpty() { return size_ == 0; }
   bool IsFull() { return size_ == capacity_; }
-  friend std::ostream &operator<< <T>(std::ostream &out, const Heap &heap);
+
+  friend std::ostream &operator<<(std::ostream &out, const Heap &heap) {
+    int break_line = 0;
+    for (int i = 0; i < heap.size_ / 2; i++) {
+      if (i == 0) out << "(" << heap.data_[i] << " [" << i << "])" << std::endl;
+      out << "(" << heap.data_[heap.Left(i)] << " [" << heap.Left(i) << "]) ("
+          << heap.data_[heap.Right(i)] << " [" << heap.Right(i) << "])";
+      if (i == break_line) {
+        out << std::endl;
+        break_line = 2 * break_line + 2;
+      } else {
+        out << "  ";
+      }
+    }
+    out << std::endl;
+    return out;
+  }
 
  protected:
   enum { DEFAULT_CAPACITY = 10 };
@@ -59,24 +69,6 @@ Heap<T>::~Heap() {
 template <class T>
 void Heap<T>::Swap(int i, int j) {
   std::swap(data_[i], data_[j]);
-}
-
-template <class T>
-std::ostream &operator<<(std::ostream &out, const Heap<T> &heap) {
-  int break_line = 0;
-  for (int i = 0; i < heap.size_ / 2; i++) {
-    if (i == 0) out << "(" << heap.data_[i] << " [" << i << "])" << std::endl;
-    out << "(" << heap.data_[heap.Left(i)] << " [" << heap.Left(i) << "]) ("
-        << heap.data_[heap.Right(i)] << " [" << heap.Right(i) << "])";
-    if (i == break_line) {
-      out << std::endl;
-      break_line = 2 * break_line + 2;
-    } else {
-      out << "  ";
-    }
-  }
-  out << std::endl;
-  return out;
 }
 
 }  // namespace heaps
