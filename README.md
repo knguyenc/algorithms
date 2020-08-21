@@ -16,17 +16,17 @@ $ cd algorithms
 
 ## Build and run
 Using CMake:
-1. Create `build` directory:
+1. Create __build__ directory:
 ```shell script
 $ mkdir build
 $ cd build
 ```
-2. Build project with `cmake` and `make`, remember we are currently in _build_ folder:
+2. Build project with `cmake` and `make`, remember we are currently in __build__ folder:
 ```shell script
 $ cmake ..
 $ make
 ```
-3. All binary files are located inside `build/bin/` directory.
+3. All binary files are located inside __build/bin/__ directory.
 
 Using `clang` of `gcc` compiler:
 1. Compile your desired file by compiler:

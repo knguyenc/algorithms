@@ -39,8 +39,8 @@ class BinaryTree {
 
 template <class T>
 BinaryTree<T>::BinaryTree() : root_(NULL), size_(0) {}
-template <class T>
 
+template <class T>
 BinaryTree<T>::~BinaryTree() {
   delete root_;
 }
