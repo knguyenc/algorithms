@@ -93,5 +93,5 @@ Quick links to implemented data structures and algorithms.
 TBA
 
 ## References
-[C++](https://isocpp.org/) \
-[CMake](https://cmake.org/documentation/)
+[C++ Documentation](https://isocpp.org/) \
+[CMake Documentation](https://cmake.org/documentation/)
