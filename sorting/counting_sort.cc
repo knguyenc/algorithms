@@ -29,7 +29,7 @@ void CountingSort(T (&array)[N], T key) {
 }  // namespace algorithms
 
 int main() {
-  int integers[11] = {6, 8, 10, 26, 9, 2, 40, 22, 5, 32, 3};
+  unsigned int integers[11] = {6, 8, 10, 26, 9, 2, 40, 22, 5, 32, 3};
   unsigned char chars[8] = {'d', 'g', 'a', 'b', 'j', 'y', 'h', 'k'};
 
   algorithms::sorting::CountingSort(integers, *(std::max_element(integers, integers + 11)));
