@@ -31,8 +31,31 @@ class BinaryTree {
   ~BinaryTree();
   int Size() const;
   bool IsEmpty() const;
-  void Insert();
-  T Remove();
+  void Insert(const T &e);
+  T Remove(const T &e);
+
+  friend std::ostream &operator<<(std::ostream &out, const BinaryTree &tree) {
+    if (tree.IsEmpty()) {
+      out << "Empty tree" << std::endl;
+    } else {
+      out << "Preorder traversal: ";
+      tree.PreOrder(tree.root_);
+      out << std::endl;
+
+      out << "Inorder traversal: ";
+      tree.InOrder(tree.root_);
+      out << std::endl;
+
+      out << "Postorder traversal: ";
+      tree.PostOrder(tree.root_);
+      out << std::endl;
+
+      out << "Levelorder traversal: ";
+      tree.LevelOrder(tree.root_);
+      out << std::endl;
+    }
+    return out;
+  }
 
  private:
   Node *root_;
@@ -40,11 +63,12 @@ class BinaryTree {
 
  private:
   // Depth First Traversals
-  void PreOrder(Node *node) const;
-  void InOrder(Node *node) const;
-  void PostOrder(Node *node) const;
+  std::ostream &PreOrder(std::ostream &out, Node *node) const;
+  std::ostream &InOrder(std::ostream &out, Node *node) const;
+  std::ostream &PostOrder(std::ostream &out, Node *node) const;
   // Breath First Traversal
-  void LevelOrder(Node *node) const;
+  std::ostream &LevelOrder(std::ostream &out, Node *node) const;
+  int Height(Node *node) const;
 };
 
 template <class T>
@@ -66,45 +90,62 @@ bool BinaryTree<T>::IsEmpty() const {
 }
 
 template <class T>
-void BinaryTree<T>::Insert() {
-
+void BinaryTree<T>::Insert(const T &e) {
+  Node *node = new Node(e);
+  if (IsEmpty()) {
+    root_ = node;
+  } else {
+  }
+  size_++;
 }
 
 template <class T>
-T BinaryTree<T>::Remove() {
+T BinaryTree<T>::Remove(const T &e) {
   return nullptr;
 }
 
 template <class T>
-void BinaryTree<T>::PreOrder(BinaryTree::Node *node) const {
-  if (node == NULL) return;
-  std::cout << node->data_ << " ";
+int BinaryTree<T>::Height(BinaryTree::Node *node) const {
+  if (node == NULL)
+    return 0;
+  else
+    return 1 + std::max(Height(node->left), Height(node->right));
+}
+
+template <class T>
+std::ostream &BinaryTree<T>::PreOrder(std::ostream &out, BinaryTree::Node *node) const {
+  if (node == NULL) return out;
+  out << node->data_ << " ";
   PreOrder(node->left_);
   PreOrder(node->right_);
+  return out;
 }
 
 template <class T>
-void BinaryTree<T>::InOrder(BinaryTree::Node *node) const {
-  if (node == NULL) return;
+std::ostream &BinaryTree<T>::InOrder(std::ostream &out, BinaryTree::Node *node) const {
+  if (node == NULL) return out;
   InOrder(node->left_);
-  std::cout << node->data_ << " ";
+  out << node->data_ << " ";
   InOrder(node->right_);
+  return out;
 }
 
 template <class T>
-void BinaryTree<T>::PostOrder(BinaryTree::Node *node) const {
-  if (node == NULL) return;
+std::ostream &BinaryTree<T>::PostOrder(std::ostream &out, BinaryTree::Node *node) const {
+  if (node == NULL) return out;
   PostOrder(node->left_);
   PostOrder(node->right_);
-  std::cout << node->data << " ";
+  out << node->data << " ";
+  return out;
 }
 
 template <class T>
-void BinaryTree<T>::LevelOrder(BinaryTree::Node *node) const {
-
+std::ostream &BinaryTree<T>::LevelOrder(std::ostream &out, BinaryTree::Node *node) const {
+  out << "To be implemented";
+  return out;
 }
 
 }  // namespace trees
 }  // namespace data_structures
 
-#endif //ALGORITHMS_DATA_STRUCTURES_TREES_BINARY_TREE_H_
+#endif  // ALGORITHMS_DATA_STRUCTURES_TREES_BINARY_TREE_H_
