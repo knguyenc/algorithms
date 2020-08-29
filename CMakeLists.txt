@@ -15,7 +15,6 @@ add_executable(circularly_linked_list data_structures/linked_lists/circularly_li
 add_executable(stack data_structures/stacks/stack.cc)
 
 add_executable(queue data_structures/queues/queue.cc)
-add_executable(deque data_structures/queues/deque.cc)
 add_executable(max_priority_queue data_structures/queues/max_priority_queue.cc)
 add_executable(min_priority_queue data_structures/queues/min_priority_queue.cc)
 

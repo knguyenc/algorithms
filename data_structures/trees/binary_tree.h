@@ -67,7 +67,8 @@ class BinaryTree {
   std::ostream &InOrder(std::ostream &out, Node *node) const;
   std::ostream &PostOrder(std::ostream &out, Node *node) const;
   // Breath First Traversal
-  std::ostream &LevelOrder(std::ostream &out, Node *node) const;
+  std::ostream &LevelOrder(std::ostream &out) const;
+  std::ostream &PrintLevel(std::ostream &out, Node *node, int level) const;
   int Height(Node *node) const;
 };
 
@@ -101,7 +102,7 @@ void BinaryTree<T>::Insert(const T &e) {
 
 template <class T>
 T BinaryTree<T>::Remove(const T &e) {
-  return nullptr;
+  return e;
 }
 
 template <class T>
@@ -140,8 +141,20 @@ std::ostream &BinaryTree<T>::PostOrder(std::ostream &out, BinaryTree::Node *node
 }
 
 template <class T>
-std::ostream &BinaryTree<T>::LevelOrder(std::ostream &out, BinaryTree::Node *node) const {
-  out << "To be implemented";
+std::ostream &BinaryTree<T>::LevelOrder(std::ostream &out) const {
+  for (int i = 1; i <= Height(root_); i++) out << PrintLevel(root_, i);
+  return out;
+}
+
+template <class T>
+std::ostream &BinaryTree<T>::PrintLevel(std::ostream &out, BinaryTree::Node *node, int level) const {
+  if (node == NULL) return out;
+  if (level == 1) {
+    out << node->data_ << " ";
+    return out;
+  }
+  PrintLevel(node->left_, level - 1);
+  PrintLevel(node->right_, level - 1);
   return out;
 }
 
