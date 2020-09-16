@@ -51,7 +51,8 @@ bool Queue<T>::IsEmpty() const {
 
 template <class T>
 bool Queue<T>::IsFull() const {
-  return head_ == tail_ + 1;
+  int temp = (tail_ + 1 == capacity_) ? 0 : tail_ + 1;
+  return head_ == temp;
 }
 
 template <class T>

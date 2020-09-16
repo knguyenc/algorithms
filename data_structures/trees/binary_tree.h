@@ -2,15 +2,10 @@
 #define ALGORITHMS_DATA_STRUCTURES_TREES_BINARY_TREE_H_
 
 #include <iostream>
+#include "data_structures/queues/queue.h"
 
 namespace data_structures {
 namespace trees {
-
-template <class T>
-class BinaryTree;
-
-template <class T>
-std::ostream &operator<<(std::ostream &out, const BinaryTree<T> &tree);
 
 template <class T>
 class BinaryTree {
@@ -18,12 +13,13 @@ class BinaryTree {
   class Node {
    private:
     T data_;
+    Node *parent_;
     Node *left_;
     Node *right_;
     friend class BinaryTree;
 
    public:
-    explicit Node(const T &data) : data_(data), left_(NULL), right_(NULL) {}
+    explicit Node(const T &data) : data_(data), parent_(NULL), left_(NULL), right_(NULL) {}
   };
 
  public:
@@ -31,6 +27,7 @@ class BinaryTree {
   ~BinaryTree();
   int Size() const;
   bool IsEmpty() const;
+  const Node &Search(const T &e) const;
   void Insert(const T &e);
   T Remove(const T &e);
 
@@ -62,6 +59,7 @@ class BinaryTree {
   int size_;
 
  private:
+  const Node &Search(const Node &node, const T &e) const;
   // Depth First Traversals
   std::ostream &PreOrder(std::ostream &out, Node *node) const;
   std::ostream &InOrder(std::ostream &out, Node *node) const;
@@ -91,11 +89,42 @@ bool BinaryTree<T>::IsEmpty() const {
 }
 
 template <class T>
+const class BinaryTree<T>::Node &BinaryTree<T>::Search(const T &e) const {
+  return Search(root_, e);
+}
+
+template <class T>
+const class BinaryTree<T>::Node &BinaryTree<T>::Search(const BinaryTree::Node &node, const T &e) const {
+  if (node == NULL) return NULL;
+  if (node->data_ == e) return node;
+  Node &left_search = Search(node.left_, e);
+  if (left_search != NULL) return left_search;
+  return Search(node.right_, e);
+}
+
+template <class T>
 void BinaryTree<T>::Insert(const T &e) {
   Node *node = new Node(e);
   if (IsEmpty()) {
     root_ = node;
   } else {
+    data_structures::queues::Queue<Node> queue(size_ + 1);
+    queue.Enqueue(root_);
+    while (!queue.IsEmpty()) {
+      Node *temp = queue.Dequeue();
+
+      if (temp->left_ == NULL) {
+        temp->left_ = node;
+        node->parent_ = temp;
+        break;
+      } else queue.Enqueue(temp->left_);
+
+      if (temp->right_ == NULL) {
+        temp->right_ = node;
+        node->parent_ = temp;
+        break;
+      } else queue.Enqueue(temp->right_);
+    }
   }
   size_++;
 }

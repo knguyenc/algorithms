@@ -49,46 +49,6 @@ $ ./build/bin/merge_sort
 
 Add `-DCMAKE_BUILD_TYPE=Debug` or `-DCMAKE_BUILD_TYPE=Release` argument to `cmake` command for `Debug`, `Release` respectively.
 
-## Contents
-Quick links to implemented data structures and algorithms.
-
-**Data Structures**
-
-- [Linked lists](https://github.com/knguyenc/algorithms/tree/master/data_structures/linked_lists)
-  - [Singly linked list](https://github.com/knguyenc/algorithms/blob/master/data_structures/linked_lists/singly_linked_list.h)
-  - [Doubly linked list](https://github.com/knguyenc/algorithms/blob/master/data_structures/linked_lists/doubly_linked_list.h)
-  - [Circularly linked list](https://github.com/knguyenc/algorithms/blob/master/data_structures/linked_lists/circularly_linked_list.h)
-- [Heaps](https://github.com/knguyenc/algorithms/tree/master/data_structures/heaps)
-  - [Max heap](https://github.com/knguyenc/algorithms/blob/master/data_structures/heaps/max_heap.h)
-  - [Min heap](https://github.com/knguyenc/algorithms/blob/master/data_structures/heaps/min_heap.h)
-- [Stacks](https://github.com/knguyenc/algorithms/tree/master/data_structures/stacks)
-  - [Stack](https://github.com/knguyenc/algorithms/blob/master/data_structures/stacks/stack.h)
-- [Queues](https://github.com/knguyenc/algorithms/tree/master/data_structures/queues)
-  - [Queue](https://github.com/knguyenc/algorithms/blob/master/data_structures/queues/queue.h)
-  - [Deque](https://github.com/knguyenc/algorithms/blob/master/data_structures/queues/deque.h)
-  - [Max priority queue](https://github.com/knguyenc/algorithms/blob/master/data_structures/queues/max_priority_queue.h)
-  - [Min priority queue](https://github.com/knguyenc/algorithms/blob/master/data_structures/queues/min_priority_queue.h)
-
-**Sorting Algorithms**
-
-- [Bubble sort](https://github.com/knguyenc/algorithms/blob/master/sorting/bubble_sort.cc)
-- [Insertion sort](https://github.com/knguyenc/algorithms/blob/master/sorting/insertion_sort.cc)
-- [Merge sort](https://github.com/knguyenc/algorithms/blob/master/sorting/merge_sort.cc)
-- [Heap sort](https://github.com/knguyenc/algorithms/blob/master/sorting/heap_sort.cc)
-- [Quick sort](https://github.com/knguyenc/algorithms/blob/master/sorting/quick_sort.cc)
-- [Counting sort](https://github.com/knguyenc/algorithms/blob/master/sorting/counting_sort.cc)
-- [Radix sort](https://github.com/knguyenc/algorithms/blob/master/sorting/radix_sort.cc)
-- [Bucket sort](https://github.com/knguyenc/algorithms/blob/master/sorting/bucket_sort.cc)
-
-**Divide and Conquer Algorithms**
-
-- [Maximum subarray](https://github.com/knguyenc/algorithms/blob/master/divide_conquer/maximum_subarray.cc)
-
-**Mathematics Algorithms**
-
-- [Factorial](https://github.com/knguyenc/algorithms/blob/master/mathematics/factorial.cc)
-- [Fibonacci](https://github.com/knguyenc/algorithms/blob/master/mathematics/fibonacci.cc)
-
 ## Algorithms explanation
 TBA
 
