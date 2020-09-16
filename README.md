@@ -31,15 +31,15 @@ $ make
 Using `clang` of `gcc` compiler:
 1. Compile your desired file by compiler:
 ```shell script
-$ clang++ ${path_to_source_file} -o ${path_to_output_file}
+$ clang++ {path_to_source_file} -o {path_to_output_file}
 ```
 or
 ```shell script
-$ g++ ${path_to_source_file} -o ${path_to_output_file}
+$ g++ {path_to_source_file} -o {path_to_output_file}
 ```
 2. Then run compiled binary file:
 ```shell script
-$ ./${path_to_binary_file}
+$ ./{path_to_binary_file}
 ```
 For example:
 ```shell script
