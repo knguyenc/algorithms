@@ -20,8 +20,7 @@ class MinPriorityQueue : public heaps::MinHeap<T> {
   void Insert(T element);
 
   friend std::ostream &operator<<(std::ostream &out, const MinPriorityQueue &queue) {
-    for (int i = 0; i < queue.size_; i++)
-      out << "(" << queue.data_[i] << " [" << i << "]) ";
+    for (int i = 0; i < queue.size_; i++) out << "(" << queue.data_[i] << " [" << i << "]) ";
     out << std::endl;
     return out;
   }
@@ -29,22 +28,20 @@ class MinPriorityQueue : public heaps::MinHeap<T> {
 
 template <class T>
 template <size_t N>
-MinPriorityQueue<T>::MinPriorityQueue(const T (&array)[N]):heaps::MinHeap<T>(array) {
+MinPriorityQueue<T>::MinPriorityQueue(const T (&array)[N]) : heaps::MinHeap<T>(array) {
   this->data_ = new T[N];
   this->capacity_ = N;
   this->size_ = 0;
-  for (unsigned int i = 0; i < N; i++)
-    Insert(array[i]);
+  for (unsigned int i = 0; i < N; i++) Insert(array[i]);
 }
 
 template <class T>
 template <size_t N>
-MinPriorityQueue<T>::MinPriorityQueue(const T (&array)[N], int capacity):heaps::MinHeap<T>(array, capacity) {
+MinPriorityQueue<T>::MinPriorityQueue(const T (&array)[N], int capacity) : heaps::MinHeap<T>(array, capacity) {
   this->data_ = new T[capacity];
   this->capacity_ = capacity;
   this->size_ = 0;
-  for (int i = 0; i < N; i++)
-    Insert(array[i]);
+  for (int i = 0; i < N; i++) Insert(array[i]);
 }
 
 template <class T>
@@ -78,4 +75,4 @@ void MinPriorityQueue<T>::Insert(T element) {
 }  // namespace queues
 }  // namespace data_structures
 
-#endif //ALGORITHMS_DATA_STRUCTURES_QUEUES_MIN_PRIORITY_QUEUE_H_
+#endif  // ALGORITHMS_DATA_STRUCTURES_QUEUES_MIN_PRIORITY_QUEUE_H_

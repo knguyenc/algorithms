@@ -85,8 +85,7 @@ void DoublyLinkedList<T>::Insert(const T &e) {
     head_ = node;
   } else {
     Node *temp = head_;
-    while (temp->next_ != NULL)
-      temp = temp->next_;
+    while (temp->next_ != NULL) temp = temp->next_;
     node->prev_ = temp;
     temp->next_ = node;
   }
@@ -97,8 +96,7 @@ template <class T>
 T DoublyLinkedList<T>::Remove(const T &e) {
   if (IsEmpty()) throw std::runtime_error("List is empty, can not remove");
   Node *old = head_;
-  while (old != NULL && old->data_ != e)
-    old = old->next_;
+  while (old != NULL && old->data_ != e) old = old->next_;
   if (old == NULL) throw std::runtime_error("Node is not exist in this list");
   T removed = old->data_;
   if (old == head_) {

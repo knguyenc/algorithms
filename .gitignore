@@ -4,10 +4,5 @@
 # Output dir
 build/
 
-# CLion
-.idea/
-cmake-build-debug/
-*.iml
-
 # VSCode
 .vscode/

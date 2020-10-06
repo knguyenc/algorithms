@@ -1,5 +1,5 @@
-#include "sorting_util.h"
 #include "data_structures/heaps/max_heap.h"
+#include "sorting_util.h"
 
 namespace algorithms {
 namespace sorting {
@@ -12,8 +12,7 @@ void HeapSort(T (&array)[N]) {
     max_heap.SetSize(max_heap.GetSize() - 1);
     max_heap.Heapify(0);
   }
-  for (unsigned int i = 0; i < N; i++)
-    array[i] = max_heap.GetData()[i];
+  for (unsigned int i = 0; i < N; i++) array[i] = max_heap.GetData()[i];
 }
 
 }  // namespace sorting

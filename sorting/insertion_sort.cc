@@ -5,7 +5,7 @@ namespace sorting {
 
 template <class T, size_t N>
 void InsertionSort(T (&array)[N]) {
-  for (int j = 1; j < (signed) N; j++) {
+  for (int j = 1; j < (signed)N; j++) {
     T key = array[j];
     int i = j - 1;
     while (i >= 0 && array[i] > key) {

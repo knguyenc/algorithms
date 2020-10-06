@@ -1,6 +1,7 @@
-#include "sorting_util.h"
-#include <vector>
 #include <cassert>
+#include <vector>
+
+#include "sorting_util.h"
 
 namespace algorithms {
 namespace sorting {
@@ -36,24 +37,23 @@ namespace sorting {
  *  - Concatenating all non-empty buckets, array is now sorted.
  */
 template <class T, size_t N>
-void BucketSort(T (&array)[N]) {
+void BucketSort(T (&array)[N], unsigned int slots = 10) {
   if (!std::is_same<T, float>::value && !std::is_same<T, double>::value)
     throw std::runtime_error("Only accept floating point number array.");
   for (T element : array)
     if (element < 0 || element >= 1)
       throw std::runtime_error("Only accept non-negative floating point number array in range [0, 1).");
 
-  std::vector<T> buckets[N];
-  for (unsigned int i = 0; i < N; i++) {
-    int bucket_index = N * array[i];
+  std::vector<T> buckets[slots];
+  for (unsigned int i = 0; i < slots; i++) {
+    int bucket_index = slots * array[i];
     buckets[bucket_index].push_back(array[i]);
   }
 
   int index = 0;
-  for (unsigned int i = 0; i < N; i++) {
+  for (unsigned int i = 0; i < slots; i++) {
     sort(buckets[i].begin(), buckets[i].end());
-    for (unsigned int j = 0; j < buckets[i].size(); j++)
-      array[index++] = buckets[i][j];
+    for (unsigned int j = 0; j < buckets[i].size(); j++) array[index++] = buckets[i][j];
   }
 }
 

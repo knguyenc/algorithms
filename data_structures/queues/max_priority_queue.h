@@ -20,8 +20,7 @@ class MaxPriorityQueue : public heaps::MaxHeap<T> {
   void Insert(T element);
 
   friend std::ostream &operator<<(std::ostream &out, const MaxPriorityQueue &queue) {
-    for (int i = 0; i < queue.size_; i++)
-      out << "(" << queue.data_[i] << " [" << i << "]) ";
+    for (int i = 0; i < queue.size_; i++) out << "(" << queue.data_[i] << " [" << i << "]) ";
     out << std::endl;
     return out;
   }
@@ -29,22 +28,20 @@ class MaxPriorityQueue : public heaps::MaxHeap<T> {
 
 template <class T>
 template <size_t N>
-MaxPriorityQueue<T>::MaxPriorityQueue(const T (&array)[N]):heaps::MaxHeap<T>(array) {
+MaxPriorityQueue<T>::MaxPriorityQueue(const T (&array)[N]) : heaps::MaxHeap<T>(array) {
   this->data_ = new T[N];
   this->capacity_ = N;
   this->size_ = 0;
-  for (unsigned int i = 0; i < N; i++)
-    Insert(array[i]);
+  for (unsigned int i = 0; i < N; i++) Insert(array[i]);
 }
 
 template <class T>
 template <size_t N>
-MaxPriorityQueue<T>::MaxPriorityQueue(const T (&array)[N], int capacity):heaps::MaxHeap<T>(array, capacity) {
+MaxPriorityQueue<T>::MaxPriorityQueue(const T (&array)[N], int capacity) : heaps::MaxHeap<T>(array, capacity) {
   this->data_ = new T[capacity];
   this->capacity_ = capacity;
   this->size_ = 0;
-  for (int i = 0; i < N; i++)
-    Insert(array[i]);
+  for (int i = 0; i < N; i++) Insert(array[i]);
 }
 
 template <class T>

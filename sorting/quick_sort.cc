@@ -8,8 +8,7 @@ int Partition(T (&array)[N], int low, int high) {
   T pivot = array[high];
   int i = low - 1;
   for (int j = low; j < high; j++)
-    if (array[j] < pivot)
-      std::swap(array[++i], array[j]);
+    if (array[j] < pivot) std::swap(array[++i], array[j]);
   std::swap(array[i + 1], array[high]);
   return i + 1;
 }
@@ -17,16 +16,14 @@ int Partition(T (&array)[N], int low, int high) {
 template <class T, size_t N>
 int HoarePartition(T (&array)[N], int low, int high) {
   T pivot = array[low];
-  int i = low - 1, j = high + 1;
+  int i = low, j = high;
   while (true) {
-    do {
-      i++;
-    } while (array[i] < pivot);
-    do {
-      j--;
-    } while (array[j] > pivot);
-    if (i < j) std::swap(array[i], array[j]);
-    else return j;
+    while (array[i] < pivot) i++;
+    while (array[j] > pivot) j--;
+    if (i < j)
+      std::swap(array[i], array[j]);
+    else
+      return j;
   }
 }
 
@@ -34,7 +31,6 @@ template <class T, size_t N>
 void QuickSort(T (&array)[N], int low, int high) {
   if (low < high) {
     int separator = Partition(array, low, high);
-    // remember to pass `separator` instead of `separator - 1` when using hoare partition
     QuickSort(array, low, separator - 1);
     QuickSort(array, separator + 1, high);
   }

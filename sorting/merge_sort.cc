@@ -8,18 +8,13 @@ void Merge(T (&array)[N], int low, int mid, int high) {
   int l_len = mid - low + 1, r_len = high - mid;
   T *l_arr = new T[l_len], *r_arr = new T[r_len];
 
-  for (int i = 0; i < l_len; i++)
-    l_arr[i] = array[low + i];
-  for (int i = 0; i < r_len; i++)
-    r_arr[i] = array[mid + 1 + i];
+  for (int i = 0; i < l_len; i++) l_arr[i] = array[low + i];
+  for (int i = 0; i < r_len; i++) r_arr[i] = array[mid + 1 + i];
 
   int i = 0, j = 0, k = low;
-  while (i < l_len && j < r_len)
-    array[k++] = l_arr[i] <= r_arr[j] ? l_arr[i++] : r_arr[j++];
-  while (i < l_len)
-    array[k++] = l_arr[i++];
-  while (j < r_len)
-    array[k++] = r_arr[j++];
+  while (i < l_len && j < r_len) array[k++] = l_arr[i] <= r_arr[j] ? l_arr[i++] : r_arr[j++];
+  while (i < l_len) array[k++] = l_arr[i++];
+  while (j < r_len) array[k++] = r_arr[j++];
 
   delete[] l_arr;
   delete[] r_arr;

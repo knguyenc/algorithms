@@ -96,8 +96,7 @@ void SinglyLinkedList<T>::Insert(const T &e) {
     head_ = node;
   } else {
     Node *temp = head_;
-    while (temp->next_ != NULL)
-      temp = temp->next_;
+    while (temp->next_ != NULL) temp = temp->next_;
     temp->next_ = node;
   }
   size_++;

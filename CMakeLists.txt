@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 project(algorithms)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 
 INCLUDE_DIRECTORIES("${CMAKE_SOURCE_DIR}")
@@ -31,6 +31,9 @@ add_executable(quick_sort sorting/quick_sort.cc)
 add_executable(counting_sort sorting/counting_sort.cc)
 add_executable(radix_sort sorting/radix_sort.cc)
 add_executable(bucket_sort sorting/bucket_sort.cc)
+
+add_executable(linear_search searching/linear_search.cc)
+add_executable(binary_search searching/binary_search.cc)
 
 add_executable(fibonacci mathematics/fibonacci.cc)
 add_executable(factorial mathematics/factorial.cc)

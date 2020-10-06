@@ -24,8 +24,7 @@ template <class T>
 template <size_t N>
 MinHeap<T>::MinHeap(const T (&array)[N]) {
   this->data_ = new T[N];
-  for (unsigned int i = 0; i < N; i++)
-    this->data_[i] = array[i];
+  for (unsigned int i = 0; i < N; i++) this->data_[i] = array[i];
   this->size_ = N;
   this->capacity_ = N;
   BuildHeap();
@@ -35,8 +34,7 @@ template <class T>
 template <size_t N>
 MinHeap<T>::MinHeap(const T (&array)[N], int capacity) {
   this->data_ = new T[capacity];
-  for (unsigned int i = 0; i < N; i++)
-    this->data_[i] = array[i];
+  for (unsigned int i = 0; i < N; i++) this->data_[i] = array[i];
   this->size_ = N;
   this->capacity_ = capacity;
   BuildHeap();
@@ -44,8 +42,7 @@ MinHeap<T>::MinHeap(const T (&array)[N], int capacity) {
 
 template <class T>
 void MinHeap<T>::BuildHeap() {
-  for (int i = this->size_ / 2; i >= 0; i--)
-    Heapify(i);
+  for (int i = this->size_ / 2; i >= 0; i--) Heapify(i);
 }
 
 template <class T>
