@@ -3,3 +3,6 @@
 
 # Output dir
 build/
+
+# VSCode
+.vscode/

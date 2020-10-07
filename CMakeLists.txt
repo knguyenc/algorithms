@@ -39,3 +39,5 @@ add_executable(fibonacci mathematics/fibonacci.cc)
 add_executable(factorial mathematics/factorial.cc)
 
 add_executable(maximum_subarray divide_conquer/maximum_subarray.cc)
+
+add_executable(knight_tour backtracking/knight_tour.cc)
