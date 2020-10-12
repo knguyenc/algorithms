@@ -17,7 +17,7 @@ class MaxPriorityQueue : public heaps::MaxHeap<T> {
   T Maximum() const;
   T ExtractMax();
   void IncreaseKey(int index, T key);
-  void Insert(T element);
+  void Insert(T value);
 
   friend std::ostream &operator<<(std::ostream &out, const MaxPriorityQueue &queue) {
     for (int i = 0; i < queue.size_; i++) out << "(" << queue.data_[i] << " [" << i << "]) ";
@@ -66,10 +66,10 @@ void MaxPriorityQueue<T>::IncreaseKey(int index, T key) {
 }
 
 template <class T>
-void MaxPriorityQueue<T>::Insert(T element) {
+void MaxPriorityQueue<T>::Insert(T value) {
   if (this->IsFull()) throw std::runtime_error("Priority queue overflow");
-  this->data_[this->size_++] = element;
-  IncreaseKey(this->size_ - 1, element);
+  this->data_[this->size_++] = value;
+  IncreaseKey(this->size_ - 1, value);
 }
 
 }  // namespace queues

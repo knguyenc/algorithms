@@ -13,9 +13,9 @@ class Heap {
   explicit Heap(int capacity);
   ~Heap();
   virtual void BuildHeap() = 0;
-  virtual void Heapify(int) = 0;
-  virtual void Insert(T) = 0;
-  virtual T Remove(int) = 0;
+  virtual void Heapify(int index) = 0;
+  virtual void Insert(T value) = 0;
+  virtual T Remove(int index) = 0;
   void Swap(int i, int j);
   bool IsEmpty() { return size_ == 0; }
   bool IsFull() { return size_ == capacity_; }
@@ -44,9 +44,9 @@ class Heap {
   int capacity_;
 
  protected:
-  int Parent(int index) const { return (index - 1) / 2; }
-  int Left(int index) const { return 2 * index + 1; }
-  int Right(int index) const { return 2 * index + 2; }
+  static int Parent(int index) { return (index - 1) / 2; }
+  static int Left(int index) { return 2 * index + 1; }
+  static int Right(int index) { return 2 * index + 2; }
 
  public:
   int GetSize() const { return size_; }

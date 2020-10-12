@@ -16,7 +16,7 @@ class MaxHeap : public Heap<T> {
   explicit MaxHeap(const T (&array)[N], int capacity);
   void BuildHeap();
   void Heapify(int index);
-  virtual void Insert(T element);
+  virtual void Insert(T value);
   T Remove(int index);
 };
 
@@ -57,9 +57,9 @@ void MaxHeap<T>::Heapify(int index) {
 }
 
 template <class T>
-void MaxHeap<T>::Insert(T element) {
+void MaxHeap<T>::Insert(T value) {
   if (this->IsFull()) throw std::runtime_error("Heap overflow");
-  this->data_[this->size_++] = element;
+  this->data_[this->size_++] = value;
   int cur = this->size_ - 1;
   while (cur > 0 && (this->data_[cur] > this->data_[this->Parent(cur)])) {
     this->Swap(cur, this->Parent(cur));

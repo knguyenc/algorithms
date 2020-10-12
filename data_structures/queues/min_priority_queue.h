@@ -17,7 +17,7 @@ class MinPriorityQueue : public heaps::MinHeap<T> {
   T Minimum() const;
   T ExtractMin();
   void DecreaseKey(int index, T key);
-  void Insert(T element);
+  void Insert(T value);
 
   friend std::ostream &operator<<(std::ostream &out, const MinPriorityQueue &queue) {
     for (int i = 0; i < queue.size_; i++) out << "(" << queue.data_[i] << " [" << i << "]) ";
@@ -66,10 +66,10 @@ void MinPriorityQueue<T>::DecreaseKey(int index, T key) {
 }
 
 template <class T>
-void MinPriorityQueue<T>::Insert(T element) {
+void MinPriorityQueue<T>::Insert(T value) {
   if (this->IsFull()) throw std::runtime_error("Priority queue overflow");
-  this->data_[this->size_++] = element;
-  DecreaseKey(this->size_ - 1, element);
+  this->data_[this->size_++] = value;
+  DecreaseKey(this->size_ - 1, value);
 }
 
 }  // namespace queues
