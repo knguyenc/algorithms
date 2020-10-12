@@ -16,7 +16,7 @@ class MaxPriorityQueue : public heaps::MaxHeap<T> {
   explicit MaxPriorityQueue(const T (&array)[N], int capacity);
   T Maximum() const;
   T ExtractMax();
-  void IncreaseKey(int index, T key);
+  void IncreaseKey(int index, const T &key);
   void Insert(const T &value);
 
   friend std::ostream &operator<<(std::ostream &out, const MaxPriorityQueue &queue) {
@@ -56,7 +56,7 @@ T MaxPriorityQueue<T>::ExtractMax() {
 }
 
 template <class T>
-void MaxPriorityQueue<T>::IncreaseKey(int index, T key) {
+void MaxPriorityQueue<T>::IncreaseKey(int index, const T &key) {
   if (key < this->data_[index]) throw std::runtime_error("New key is smaller than current key");
   this->data_[index] = key;
   while (index > 0 && this->data_[this->Parent(index)] < this->data_[index]) {

@@ -16,7 +16,7 @@ class MinPriorityQueue : public heaps::MinHeap<T> {
   explicit MinPriorityQueue(const T (&array)[N], int capacity);
   T Minimum() const;
   T ExtractMin();
-  void DecreaseKey(int index, T key);
+  void DecreaseKey(int index, const T &key);
   void Insert(const T &value);
 
   friend std::ostream &operator<<(std::ostream &out, const MinPriorityQueue &queue) {
@@ -56,7 +56,7 @@ T MinPriorityQueue<T>::ExtractMin() {
 }
 
 template <class T>
-void MinPriorityQueue<T>::DecreaseKey(int index, T key) {
+void MinPriorityQueue<T>::DecreaseKey(int index, const T &key) {
   if (key > this->data_[index]) throw std::runtime_error("New key is larger than current key");
   this->data_[index] = key;
   while (index > 0 && this->data_[this->Parent(index)] > this->data_[index]) {
