@@ -16,7 +16,7 @@ class MinHeap : public Heap<T> {
   explicit MinHeap(const T (&array)[N], int capacity);
   void BuildHeap();
   void Heapify(int index);
-  virtual void Insert(T value);
+  virtual void Insert(const T &value);
   T Remove(int index);
 };
 
@@ -57,7 +57,7 @@ void MinHeap<T>::Heapify(int index) {
 }
 
 template <class T>
-void MinHeap<T>::Insert(T value) {
+void MinHeap<T>::Insert(const T &value) {
   if (this->IsFull()) throw std::runtime_error("Heap overflow");
   this->data_[this->size_++] = value;
   int cur = this->size_ - 1;

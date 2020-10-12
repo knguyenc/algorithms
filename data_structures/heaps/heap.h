@@ -14,7 +14,7 @@ class Heap {
   ~Heap();
   virtual void BuildHeap() = 0;
   virtual void Heapify(int index) = 0;
-  virtual void Insert(T value) = 0;
+  virtual void Insert(const T &value) = 0;
   virtual T Remove(int index) = 0;
   void Swap(int i, int j);
   bool IsEmpty() { return size_ == 0; }
