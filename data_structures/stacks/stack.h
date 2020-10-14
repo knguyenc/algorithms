@@ -18,8 +18,18 @@ class Stack {
   bool IsEmpty() const;
   bool IsFull() const;
   T &Top() const;
-  void Push(const T &e);
+  void Push(const T &value);
   T Pop();
+
+  friend std::ostream &operator<<(std::ostream &out, const Stack &stack) {
+    if (stack.IsEmpty())
+      out << "Empty stack";
+    else {
+      out << "Stack: ";
+      for (int i = 0; i <= stack.top_; i++) out << stack.data_[i] << " ";
+    }
+    return out;
+  }
 
  private:
   T *data_;
@@ -60,9 +70,9 @@ T &Stack<T>::Top() const {
 }
 
 template <class T>
-void Stack<T>::Push(const T &e) {
+void Stack<T>::Push(const T &value) {
   if (IsFull()) throw std::runtime_error("Stack overflow, can not push.");
-  data_[++top_] = e;
+  data_[++top_] = value;
 }
 
 template <class T>
