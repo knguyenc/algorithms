@@ -20,8 +20,8 @@ class MaxPriorityQueue : public heaps::MaxHeap<T> {
   void Insert(const T &value);
 
   friend std::ostream &operator<<(std::ostream &out, const MaxPriorityQueue &queue) {
+    out << "Queue: ";
     for (int i = 0; i < queue.size_; i++) out << "(" << queue.data_[i] << " [" << i << "]) ";
-    out << std::endl;
     return out;
   }
 };

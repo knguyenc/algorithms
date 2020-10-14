@@ -17,9 +17,29 @@ class Queue {
   int Size() const;
   bool IsEmpty() const;
   bool IsFull() const;
-  T &Head() const;
-  void Enqueue(const T &e);
+  T Head() const;
+  void Enqueue(const T &value);
   T Dequeue();
+
+  friend std::ostream &operator<<(std::ostream &out, const Queue &queue) {
+    if (queue.IsEmpty())
+      out << "Empty queue";
+    else {
+      int index = queue.head_;
+      out << "Queue: ";
+      while (true) {
+        out << queue.data_[index] << " ";
+        index = (index + 1) == queue.capacity_ ? 0 : index + 1;
+        bool cond = queue.head_ < queue.tail_;
+        if (cond)
+          cond = index >= queue.head_ && index < queue.tail_;
+        else
+          cond = (index >= queue.head_ && index < queue.capacity_) || (index >= 0 && index < queue.tail_);
+        if (!cond) break;
+      }
+    }
+    return out;
+  }
 
  private:
   T *data_;
@@ -56,16 +76,16 @@ bool Queue<T>::IsFull() const {
 }
 
 template <class T>
-T &Queue<T>::Head() const {
+T Queue<T>::Head() const {
   if (IsEmpty()) throw std::runtime_error("Queue underflow, can not get head.");
   return data_[head_];
 }
 
 template <class T>
-void Queue<T>::Enqueue(const T &e) {
+void Queue<T>::Enqueue(const T &value) {
   if (IsFull()) throw std::runtime_error("Queue overflow, can not enqueue.");
-  data_[tail_] = e;
-  tail_ = (capacity_ == tail_ + 1) ? 0 : tail_ + 1;
+  data_[tail_] = value;
+  tail_ = (capacity_ == (tail_ + 1)) ? 0 : tail_ + 1;
 }
 
 template <class T>

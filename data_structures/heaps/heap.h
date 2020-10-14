@@ -33,7 +33,6 @@ class Heap {
         out << "  ";
       }
     }
-    out << std::endl;
     return out;
   }
 

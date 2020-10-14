@@ -1,23 +1,27 @@
 #include "doubly_linked_list.h"
 
 int main() {
-  std::cout << "Test doubly linked list: " << std::endl;
-  data_structures::linked_lists::DoublyLinkedList<int> dl;
-  std::cout << "Empty: " << dl.IsEmpty() << std::endl;
-  std::cout << dl;
-  dl.Insert(8);
-  dl.Insert(12);
-  dl.Insert(6);
-  dl.Insert(10);
-  std::cout << "Size: " << dl.Size() << std::endl;
-  std::cout << "Empty: " << dl.IsEmpty() << std::endl;
-  std::cout << dl;
-  std::cout << "Search 8: " << dl.Search(8) << std::endl;
-  std::cout << "Search 9: " << dl.Search(9) << std::endl;
-  std::cout << "Remove 8: " << dl.Remove(8) << std::endl;
-  std::cout << dl;
-  std::cout << "Remove 6: " << dl.Remove(6) << std::endl;
-  std::cout << dl;
+  std::cout << "TEST DOUBLY LINKED LIST\n" << std::endl;
+  data_structures::linked_lists::DoublyLinkedList<int> linked_list;
+  std::cout << "Empty: " << linked_list.IsEmpty() << std::endl;
+  std::cout << "Size: " << linked_list.Size() << std::endl;
+  std::cout << "Insert 8" << std::endl;
+  linked_list.Insert(8);
+  std::cout << "Insert 12" << std::endl;
+  linked_list.Insert(12);
+  std::cout << "Insert 6" << std::endl;
+  linked_list.Insert(6);
+  std::cout << "Insert 10" << std::endl;
+  linked_list.Insert(10);
+  std::cout << "Size: " << linked_list.Size() << std::endl;
+  std::cout << "Empty: " << linked_list.IsEmpty() << std::endl;
+  std::cout << linked_list << std::endl;
+  std::cout << "Search 8: " << linked_list.Search(8) << std::endl;
+  std::cout << "Search 9: " << linked_list.Search(9) << std::endl;
+  std::cout << "Remove 10: " << linked_list.Remove(10) << std::endl;
+  std::cout << linked_list << std::endl;
+  std::cout << "Remove 6: " << linked_list.Remove(6) << std::endl;
+  std::cout << linked_list << std::endl;
 
   return 0;
 }

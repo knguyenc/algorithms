@@ -34,8 +34,8 @@ void KnightTour() {
   for (int i = 0; i < n; i++)
     for (int j = 0; j < n; j++) board[i][j] = -1;
 
-  int x_move[8] = {2, 1, -1, -2, -2, -1, 2, 1};
-  int y_move[8] = {1, 2, 2, 1, -1, -2, -1, -2};
+  int x_move[] = {2, 1, -1, -2, -2, -1, 2, 1};
+  int y_move[] = {1, 2, 2, 1, -1, -2, -1, -2};
 
   board[0][0] = 0;
   if (KnightTourRecursive(board, x_move, y_move, 1, 0, 0))

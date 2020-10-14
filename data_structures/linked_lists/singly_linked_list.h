@@ -36,9 +36,9 @@ class SinglyLinkedList {
   ~SinglyLinkedList();
   int Size() const;
   bool IsEmpty() const;
-  bool Search(const T &e) const;
-  void Insert(const T &e);
-  T Remove(const T &e);
+  bool Search(const T &data) const;
+  void Insert(const T &data);
+  T Remove(const T &data);
 
   friend std::ostream &operator<<(std::ostream &out, const SinglyLinkedList &list) {
     if (list.IsEmpty()) {
@@ -47,11 +47,10 @@ class SinglyLinkedList {
       typename SinglyLinkedList::Node *temp = list.head_;
       out << "List: ";
       while (temp != NULL) {
-        out << temp->data_ << " ";
+        out << "[" << temp->data_ << "]->";
         temp = temp->next_;
       }
     }
-    out << std::endl;
     return out;
   }
 
@@ -76,25 +75,25 @@ int SinglyLinkedList<T>::Size() const {
 
 template <class T>
 bool SinglyLinkedList<T>::IsEmpty() const {
-  return (size_ == 0);
+  return (head_ == NULL);
 }
 
 template <class T>
-bool SinglyLinkedList<T>::Search(const T &e) const {
+bool SinglyLinkedList<T>::Search(const T &data) const {
   Node *temp = head_;
   while (temp != NULL) {
-    if (temp->data_ == e) return true;
+    if (temp->data_ == data) return true;
     temp = temp->next_;
   }
   return false;
 }
 
 template <class T>
-void SinglyLinkedList<T>::Insert(const T &e) {
-  Node *node = new Node(e);
-  if (IsEmpty()) {
+void SinglyLinkedList<T>::Insert(const T &data) {
+  Node *node = new Node(data);
+  if (IsEmpty())
     head_ = node;
-  } else {
+  else {
     Node *temp = head_;
     while (temp->next_ != NULL) temp = temp->next_;
     temp->next_ = node;
@@ -103,10 +102,10 @@ void SinglyLinkedList<T>::Insert(const T &e) {
 }
 
 template <class T>
-T SinglyLinkedList<T>::Remove(const T &e) {
+T SinglyLinkedList<T>::Remove(const T &data) {
   if (IsEmpty()) throw std::runtime_error("List is empty, can not remove");
   Node *old = head_, *prev;
-  while (old != NULL && old->data_ != e) {
+  while (old != NULL && old->data_ != data) {
     prev = old;
     old = old->next_;
   }

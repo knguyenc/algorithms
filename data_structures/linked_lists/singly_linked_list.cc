@@ -1,23 +1,27 @@
 #include "singly_linked_list.h"
 
 int main() {
-  std::cout << "Test singly linked list: " << std::endl;
-  data_structures::linked_lists::SinglyLinkedList<int> sl;
-  std::cout << "Empty: " << sl.IsEmpty() << std::endl;
-  std::cout << sl;
-  sl.Insert(8);
-  sl.Insert(12);
-  sl.Insert(6);
-  sl.Insert(10);
-  std::cout << "Size: " << sl.Size() << std::endl;
-  std::cout << "Empty: " << sl.IsEmpty() << std::endl;
-  std::cout << sl;
-  std::cout << "Search 8: " << sl.Search(8) << std::endl;
-  std::cout << "Search 9: " << sl.Search(9) << std::endl;
-  std::cout << "Remove 8: " << sl.Remove(8) << std::endl;
-  std::cout << sl;
-  std::cout << "Remove 6: " << sl.Remove(6) << std::endl;
-  std::cout << sl;
+  std::cout << "TEST SINGLY LINKED LIST\n" << std::endl;
+  data_structures::linked_lists::SinglyLinkedList<int> linked_list;
+  std::cout << "Empty: " << linked_list.IsEmpty() << std::endl;
+  std::cout << "Size: " << linked_list.Size() << std::endl;
+  std::cout << "Insert 8" << std::endl;
+  linked_list.Insert(8);
+  std::cout << "Insert 12" << std::endl;
+  linked_list.Insert(12);
+  std::cout << "Insert 6" << std::endl;
+  linked_list.Insert(6);
+  std::cout << "Insert 10" << std::endl;
+  linked_list.Insert(10);
+  std::cout << "Size: " << linked_list.Size() << std::endl;
+  std::cout << "Empty: " << linked_list.IsEmpty() << std::endl;
+  std::cout << linked_list << std::endl;
+  std::cout << "Search 8: " << linked_list.Search(8) << std::endl;
+  std::cout << "Search 9: " << linked_list.Search(9) << std::endl;
+  std::cout << "Remove 10: " << linked_list.Remove(10) << std::endl;
+  std::cout << linked_list << std::endl;
+  std::cout << "Remove 6: " << linked_list.Remove(6) << std::endl;
+  std::cout << linked_list << std::endl;
 
   return 0;
 }

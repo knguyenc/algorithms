@@ -1,23 +1,30 @@
 #include "circularly_linked_list.h"
 
 int main() {
-  std::cout << "Test circularly linked list: " << std::endl;
-  data_structures::linked_lists::CircularlyLinkedList<int> cl;
-  std::cout << "Empty: " << cl.IsEmpty() << std::endl;
-  std::cout << cl;
-  cl.Insert(8);
-  cl.Insert(12);
-  cl.Insert(6);
-  cl.Insert(10);
-  std::cout << "Size: " << cl.Size() << std::endl;
-  std::cout << "Empty: " << cl.IsEmpty() << std::endl;
-  std::cout << cl;
-  std::cout << "Search 8: " << cl.Search(8) << std::endl;
-  std::cout << "Search 9: " << cl.Search(9) << std::endl;
-  std::cout << "Remove 8: " << cl.Remove(8) << std::endl;
-  std::cout << cl;
-  std::cout << "Remove 6: " << cl.Remove(6) << std::endl;
-  std::cout << cl;
+  std::cout << "TEST CIRCULARLY LINKED LIST\n" << std::endl;
+  data_structures::linked_lists::CircularlyLinkedList<int> linked_list;
+  std::cout << "Empty: " << linked_list.IsEmpty() << std::endl;
+  std::cout << "Size: " << linked_list.Size() << std::endl;
+  std::cout << "Insert 8" << std::endl;
+  linked_list.Insert(8);
+  std::cout << "Insert 12" << std::endl;
+  linked_list.Insert(12);
+  std::cout << "Insert 6" << std::endl;
+  linked_list.Insert(6);
+  std::cout << "Insert 10" << std::endl;
+  linked_list.Insert(10);
+  std::cout << "Size: " << linked_list.Size() << std::endl;
+  std::cout << "Empty: " << linked_list.IsEmpty() << std::endl;
+  std::cout << linked_list << std::endl;
+  std::cout << "Search 8: " << linked_list.Search(8) << std::endl;
+  std::cout << "Search 9: " << linked_list.Search(9) << std::endl;
+  std::cout << "Remove 10: " << linked_list.Remove(10) << std::endl;
+  std::cout << linked_list << std::endl;
+  std::cout << "Remove 6: " << linked_list.Remove(6) << std::endl;
+  std::cout << linked_list << std::endl;
+  std::cout << "Rotate" << std::endl;
+  linked_list.Rotate();
+  std::cout << linked_list << std::endl;
 
   return 0;
 }

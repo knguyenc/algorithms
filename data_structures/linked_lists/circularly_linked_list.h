@@ -25,9 +25,9 @@ class CircularlyLinkedList {
   int Size() const;
   bool IsEmpty() const;
   void Rotate();
-  bool Search(const T &e) const;
-  void Insert(const T &e);
-  T Remove(const T &e);
+  bool Search(const T &data) const;
+  void Insert(const T &data);
+  T Remove(const T &data);
 
   friend std::ostream &operator<<(std::ostream &out, const CircularlyLinkedList &list) {
     if (list.IsEmpty()) {
@@ -36,11 +36,10 @@ class CircularlyLinkedList {
       typename CircularlyLinkedList::Node *temp = list.tail_->next_;
       out << "List: ";
       do {
-        out << temp->data_ << " ";
+        out << "[" << temp->data_ << "]->";
         temp = temp->next_;
       } while (temp != list.tail_->next_);
     }
-    out << std::endl;
     return out;
   }
 
@@ -65,7 +64,7 @@ int CircularlyLinkedList<T>::Size() const {
 
 template <class T>
 bool CircularlyLinkedList<T>::IsEmpty() const {
-  return (size_ == 0);
+  return (tail_ == NULL);
 }
 
 template <class T>
@@ -74,19 +73,19 @@ void CircularlyLinkedList<T>::Rotate() {
 }
 
 template <class T>
-bool CircularlyLinkedList<T>::Search(const T &e) const {
+bool CircularlyLinkedList<T>::Search(const T &data) const {
   if (IsEmpty()) return false;
   Node *temp = tail_->next_;
   do {
-    if (temp->data_ == e) return true;
+    if (temp->data_ == data) return true;
     temp = temp->next_;
   } while (temp != tail_->next_);
   return false;
 }
 
 template <class T>
-void CircularlyLinkedList<T>::Insert(const T &e) {
-  Node *node = new Node(e);
+void CircularlyLinkedList<T>::Insert(const T &data) {
+  Node *node = new Node(data);
   if (IsEmpty()) {
     tail_ = node;
     tail_->next_ = tail_;
@@ -99,13 +98,13 @@ void CircularlyLinkedList<T>::Insert(const T &e) {
 }
 
 template <class T>
-T CircularlyLinkedList<T>::Remove(const T &e) {
+T CircularlyLinkedList<T>::Remove(const T &data) {
   if (IsEmpty()) throw std::runtime_error("List is empty, can not remove");
   Node *old = tail_->next_, *prev;
   do {
     prev = old;
     old = old->next_;
-  } while (old != tail_->next_ && old->data_ != e);
+  } while (old != tail_->next_ && old->data_ != data);
   if (old == NULL) throw std::runtime_error("Node is not exist in this list");
   T removed = old->data_;
   if (tail_->next_ == tail_) {
