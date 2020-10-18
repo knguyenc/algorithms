@@ -28,8 +28,8 @@ class BinaryTree {
   int Size() const;
   bool IsEmpty() const;
   const Node *Search(const T &data) const;
-  void Insert(const T &data);
-  T Remove(const T &data);
+  virtual void Insert(const T &data);
+  virtual T Remove(const T &data);
 
   friend std::ostream &operator<<(std::ostream &out, const BinaryTree &tree) {
     if (tree.IsEmpty()) {
@@ -70,7 +70,7 @@ class BinaryTree {
   }
 
  protected:
-  const Node *Search(const Node *node, const T &data) const;
+  virtual Node *Search(Node *node, const T &data) const;
   // Depth First Traversals
   void PreOrder(std::ostream &out, Node *node, bool recursive) const;
   void InOrder(std::ostream &out, Node *node, bool recursive) const;
@@ -81,7 +81,7 @@ class BinaryTree {
   int Height(Node *node) const;
   void Transplant(Node *node, Node *child);
 
- private:
+ protected:
   Node *root_;
   int size_;
 };
@@ -110,9 +110,9 @@ const typename BinaryTree<T>::Node *BinaryTree<T>::Search(const T &data) const {
 }
 
 template <class T>
-const typename BinaryTree<T>::Node *BinaryTree<T>::Search(const BinaryTree::Node *node, const T &data) const {
+typename BinaryTree<T>::Node *BinaryTree<T>::Search(BinaryTree::Node *node, const T &data) const {
   if (node == NULL || node->data_ == data) return node;
-  const Node *left_search = Search(node->left_, data);
+  Node *left_search = Search(node->left_, data);
   if (left_search != NULL) return left_search;
   return Search(node->right_, data);
 }
