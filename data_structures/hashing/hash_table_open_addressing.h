@@ -64,6 +64,10 @@ HashTableOpenAddressing<K, V>::HashTableOpenAddressing(int capacity)
 
 template <class K, class V>
 HashTableOpenAddressing<K, V>::~HashTableOpenAddressing() {
+  for (int i = 0; i < capacity_; i++) {
+    delete keys_[i];
+    delete values_[i];
+  }
   delete[] keys_;
   delete[] values_;
 }

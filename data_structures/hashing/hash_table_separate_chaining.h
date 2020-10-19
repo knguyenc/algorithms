@@ -67,6 +67,7 @@ HashTableSeparateChaining<K, V>::HashTableSeparateChaining(int slots)
 
 template <class K, class V>
 HashTableSeparateChaining<K, V>::~HashTableSeparateChaining() {
+  for (int i = 0; i < slots_; i++) delete buckets_[i];
   delete[] buckets_;
 }
 
