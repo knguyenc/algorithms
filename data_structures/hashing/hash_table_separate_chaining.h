@@ -21,7 +21,6 @@ class HashTableSeparateChaining {
     friend class HashTableSeparateChaining;
 
    public:
-    // Node() : key_(K()), value_(V()), next_(NULL) {}
     Node(const K &key, const V &value) : key_(key), value_(value), next_(NULL) {}
   };
 
@@ -45,11 +44,7 @@ class HashTableSeparateChaining {
   }
 
  protected:
-  int Hashing(K key) const {
-    int hash = (int)key % slots_;
-    if (hash < 0) hash += slots_;
-    return hash;
-  };
+  int Hashing(K key) const;
 
  private:
   Node **buckets_;
@@ -61,13 +56,13 @@ class HashTableSeparateChaining {
 template <class K, class V>
 HashTableSeparateChaining<K, V>::HashTableSeparateChaining()
     : buckets_(new Node *[DEFAULT_SLOTS]), slots_(DEFAULT_SLOTS), size_(0) {
-  for (int i = 0; i < DEFAULT_SLOTS; i++) buckets_[i] = NULL;
+  for (int i = 0; i < slots_; i++) buckets_[i] = NULL;
 }
 
 template <class K, class V>
 HashTableSeparateChaining<K, V>::HashTableSeparateChaining(int slots)
     : buckets_(new Node *[slots]), slots_(slots), size_(-1) {
-  for (int i = 0; i < slots; i++) buckets_[i] = NULL;
+  for (int i = 0; i < slots_; i++) buckets_[i] = NULL;
 }
 
 template <class K, class V>
@@ -90,6 +85,13 @@ K *HashTableSeparateChaining<K, V>::Keys() const {
   K *keys_array = new K[keys_.size()];
   for (unsigned long i = 0; i < keys_.size(); i++) keys_array[i] = keys_[i];
   return keys_array;
+}
+
+template <class K, class V>
+int HashTableSeparateChaining<K, V>::Hashing(K key) const {
+  int hash = (int)key % slots_;
+  if (hash < 0) hash += slots_;
+  return hash;
 }
 
 template <class K, class V>
@@ -124,7 +126,7 @@ template <class K, class V>
 V HashTableSeparateChaining<K, V>::Remove(K key) {
   int hash = Hashing(key);
   Node *node = buckets_[hash], *prev = NULL;
-  while (node != NULL && node->key_ == key) {
+  while (node != NULL && node->key_ != key) {
     prev = node;
     node = node->next_;
   }
@@ -137,6 +139,7 @@ V HashTableSeparateChaining<K, V>::Remove(K key) {
   else
     prev->next_ = node->next_;
   node->next_ = NULL;
+  delete node;
   keys_.erase(std::remove(keys_.begin(), keys_.end(), key), keys_.end());
   size_--;
   return removed;

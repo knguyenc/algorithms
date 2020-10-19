@@ -21,9 +21,9 @@ int main() {
   std::cout << "Empty: " << hash_table.IsEmpty() << std::endl;
   std::cout << "Size: " << hash_table.Size() << std::endl;
   std::cout << "Get key 71: " << hash_table.Get(71) << std::endl;
-  std::cout << "Remove: " << hash_table.Remove(60) << std::endl;
+  std::cout << "Remove key 60: " << hash_table.Remove(60) << std::endl;
   std::cout << "Size: " << hash_table.Size() << std::endl;
-  std::cout << "Remove: " << hash_table.Remove(22) << std::endl;
+  std::cout << "Remove key 22: " << hash_table.Remove(22) << std::endl;
   std::cout << "Size: " << hash_table.Size() << std::endl;
   std::cout << hash_table << std::endl;
   return 0;
