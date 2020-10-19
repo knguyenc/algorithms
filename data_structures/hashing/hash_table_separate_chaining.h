@@ -61,7 +61,7 @@ HashTableSeparateChaining<K, V>::HashTableSeparateChaining()
 
 template <class K, class V>
 HashTableSeparateChaining<K, V>::HashTableSeparateChaining(int slots)
-    : buckets_(new Node *[slots]), slots_(slots), size_(-1) {
+    : buckets_(new Node *[slots]), slots_(slots), size_(0) {
   for (int i = 0; i < slots_; i++) buckets_[i] = NULL;
 }
 

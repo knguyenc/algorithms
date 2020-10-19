@@ -25,6 +25,7 @@ add_executable(binary_tree data_structures/trees/binary_tree.cc)
 add_executable(binary_search_tree data_structures/trees/binary_search_tree.cc)
 
 add_executable(hash_table_separate_chaining data_structures/hashing/hash_table_separate_chaining.cc)
+add_executable(hash_table_open_addressing data_structures/hashing/hash_table_open_addressing.cc)
 
 add_executable(insertion_sort sorting/insertion_sort.cc)
 add_executable(bubble_sort sorting/bubble_sort.cc)
