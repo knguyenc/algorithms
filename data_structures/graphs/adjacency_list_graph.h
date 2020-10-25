@@ -135,13 +135,6 @@ void AdjacencyListGraph<T>::BreadthFirst(std::ostream &out) const {
 }
 
 template <class T>
-void AdjacencyListGraph<T>::DepthFirst(std::ostream &out) const {
-  if (IsEmpty()) return;
-  std::vector<T> visited;
-  DepthFirstRecursive(out, vertices_[0], visited);
-}
-
-template <class T>
 void AdjacencyListGraph<T>::DepthFirstRecursive(std::ostream &out, Vertex *v, std::vector<T> &visited) const {
   if (!(std::find(visited.begin(), visited.end(), v->data_) != visited.end())) {
     visited.push_back(v->data_);
@@ -149,7 +142,15 @@ void AdjacencyListGraph<T>::DepthFirstRecursive(std::ostream &out, Vertex *v, st
   }
   for (Vertex *av : v->adjacent_vertices_)
     if (!(std::find(visited.begin(), visited.end(), av->data_) != visited.end()))
-      DepthFirstRecursive(out, v, visited);
+      DepthFirstRecursive(out, av, visited);
+}
+
+template <class T>
+void AdjacencyListGraph<T>::DepthFirst(std::ostream &out) const {
+  if (IsEmpty()) return;
+  std::vector<T> visited;
+  for (unsigned long i = 0; i < vertices_.size(); i++)
+    DepthFirstRecursive(out, vertices_[i], visited);
 }
 
 }  // namespace graphs
