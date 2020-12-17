@@ -1,4 +1,7 @@
 #include <iostream>
+#include <tuple>
+#include <climits>
+#include <cstdint>
 
 namespace algorithms {
 namespace divide_conquer {

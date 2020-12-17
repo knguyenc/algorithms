@@ -1,5 +1,6 @@
 #include <cassert>
 #include <vector>
+#include <algorithm>
 
 #include "sorting_util.h"
 
