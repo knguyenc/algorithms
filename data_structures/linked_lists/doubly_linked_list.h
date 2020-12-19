@@ -10,13 +10,11 @@ template <class T>
 class DoublyLinkedList {
  public:
   class Node {
-   private:
+   public:
     T data_;
     Node *prev_;
     Node *next_;
     friend class DoublyLinkedList;
-
-   public:
     explicit Node(const T &data) : data_(data), prev_(NULL), next_(NULL) {}
   };
 

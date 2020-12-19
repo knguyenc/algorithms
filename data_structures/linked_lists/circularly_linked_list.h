@@ -10,12 +10,10 @@ template <class T>
 class CircularlyLinkedList {
  public:
   class Node {
-   private:
+   public:
     T data_;
     Node *next_;
     friend class CircularlyLinkedList;
-
-   public:
     explicit Node(const T &data) : data_(data), next_(NULL) {}
   };
 

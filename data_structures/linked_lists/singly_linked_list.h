@@ -22,12 +22,10 @@ template <class T>
 class SinglyLinkedList {
  public:
   class Node {
-   private:
+   public:
     T data_;
     Node *next_;
     friend class SinglyLinkedList;
-
-   public:
     explicit Node(const T &data) : data_(data), next_(NULL) {}
   };
 
