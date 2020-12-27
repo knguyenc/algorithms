@@ -2,7 +2,8 @@
 
 int main() {
   std::cout << "TEST HASH TABLE SEPARATE CHAINING\n" << std::endl;
-  data_structures::hashing::HashTableSeparateChaining<int, std::string> hash_table;
+  data_structures::hashing::HashTableSeparateChaining<int, std::string>
+      hash_table;
   std::cout << "Empty: " << hash_table.IsEmpty() << std::endl;
   std::cout << "Size: " << hash_table.Size() << std::endl;
   std::cout << "Insert 18: Cat" << std::endl;

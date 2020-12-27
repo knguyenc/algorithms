@@ -48,8 +48,11 @@ void MaxHeap<T>::BuildHeap() {
 template <class T>
 void MaxHeap<T>::Heapify(int index) {
   int left = this->Left(index), right = this->Right(index), largest;
-  largest = (left < this->size_ && this->data_[left] > this->data_[index]) ? left : index;
-  if (right < this->size_ && this->data_[right] > this->data_[largest]) largest = right;
+  largest = (left < this->size_ && this->data_[left] > this->data_[index])
+                ? left
+                : index;
+  if (right < this->size_ && this->data_[right] > this->data_[largest])
+    largest = right;
   if (largest != index) {
     this->Swap(index, largest);
     Heapify(largest);

@@ -1,4 +1,5 @@
 #include <algorithm>
+
 #include "sorting_util.h"
 
 namespace algorithms {
@@ -26,7 +27,8 @@ void DigitCountingSort(unsigned int (&array)[N], int position) {
 template <size_t N>
 void RadixSort(unsigned int (&array)[N]) {
   unsigned int max_element = *(std::max_element(array, array + N));
-  for (int pos = 1; max_element / pos > 0; pos *= 10) DigitCountingSort(array, pos);
+  for (int pos = 1; max_element / pos > 0; pos *= 10)
+    DigitCountingSort(array, pos);
 }
 
 }  // namespace sorting

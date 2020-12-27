@@ -21,7 +21,8 @@ class HashTableSeparateChaining {
     friend class HashTableSeparateChaining;
 
    public:
-    Node(const K &key, const V &value) : key_(key), value_(value), next_(NULL) {}
+    Node(const K &key, const V &value)
+        : key_(key), value_(value), next_(NULL) {}
   };
 
  public:
@@ -35,11 +36,13 @@ class HashTableSeparateChaining {
   void Insert(K key, V value);
   V Remove(K key);
 
-  friend std::ostream &operator<<(std::ostream &out, const HashTableSeparateChaining &hash_table) {
+  friend std::ostream &operator<<(std::ostream &out,
+                                  const HashTableSeparateChaining &hash_table) {
     if (hash_table.IsEmpty())
       out << "Empty hash table";
     else
-      for (K key : hash_table.keys_) out << "(" << key << ": " << hash_table.Get(key) << ") ";
+      for (K key : hash_table.keys_)
+        out << "(" << key << ": " << hash_table.Get(key) << ") ";
     return out;
   }
 
@@ -131,7 +134,8 @@ V HashTableSeparateChaining<K, V>::Remove(K key) {
     prev = node;
     node = node->next_;
   }
-  if (node == NULL) throw std::runtime_error("Key is not exist in this hash table");
+  if (node == NULL)
+    throw std::runtime_error("Key is not exist in this hash table");
   V removed = node->value_;
   if (node == buckets_[hash])
     buckets_[hash] = node->next_;

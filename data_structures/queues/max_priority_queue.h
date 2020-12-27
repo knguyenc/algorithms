@@ -19,16 +19,19 @@ class MaxPriorityQueue : public heaps::MaxHeap<T> {
   void IncreaseKey(int index, const T &key);
   void Insert(const T &value);
 
-  friend std::ostream &operator<<(std::ostream &out, const MaxPriorityQueue &queue) {
+  friend std::ostream &operator<<(std::ostream &out,
+                                  const MaxPriorityQueue &queue) {
     out << "Queue: ";
-    for (int i = 0; i < queue.size_; i++) out << "(" << queue.data_[i] << " [" << i << "]) ";
+    for (int i = 0; i < queue.size_; i++)
+      out << "(" << queue.data_[i] << " [" << i << "]) ";
     return out;
   }
 };
 
 template <class T>
 template <size_t N>
-MaxPriorityQueue<T>::MaxPriorityQueue(const T (&array)[N]) : heaps::MaxHeap<T>(array) {
+MaxPriorityQueue<T>::MaxPriorityQueue(const T (&array)[N])
+    : heaps::MaxHeap<T>(array) {
   this->data_ = new T[N];
   this->capacity_ = N;
   this->size_ = 0;
@@ -37,7 +40,8 @@ MaxPriorityQueue<T>::MaxPriorityQueue(const T (&array)[N]) : heaps::MaxHeap<T>(a
 
 template <class T>
 template <size_t N>
-MaxPriorityQueue<T>::MaxPriorityQueue(const T (&array)[N], int capacity) : heaps::MaxHeap<T>(array, capacity) {
+MaxPriorityQueue<T>::MaxPriorityQueue(const T (&array)[N], int capacity)
+    : heaps::MaxHeap<T>(array, capacity) {
   this->data_ = new T[capacity];
   this->capacity_ = capacity;
   this->size_ = 0;
@@ -57,7 +61,8 @@ T MaxPriorityQueue<T>::ExtractMax() {
 
 template <class T>
 void MaxPriorityQueue<T>::IncreaseKey(int index, const T &key) {
-  if (key < this->data_[index]) throw std::runtime_error("New key is smaller than current key");
+  if (key < this->data_[index])
+    throw std::runtime_error("New key is smaller than current key");
   this->data_[index] = key;
   while (index > 0 && this->data_[this->Parent(index)] < this->data_[index]) {
     this->Swap(index, this->Parent(index));

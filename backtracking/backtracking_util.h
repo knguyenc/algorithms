@@ -10,7 +10,8 @@ namespace backtracking {
 template <class T, size_t N>
 void PrintMatrix(const T (&matrix)[N][N]) {
   for (unsigned int i = 0; i < N; i++) {
-    for (unsigned int j = 0; j < N; j++) std::cout << std::setw(2) << matrix[i][j] << " ";
+    for (unsigned int j = 0; j < N; j++)
+      std::cout << std::setw(2) << matrix[i][j] << " ";
     std::cout << std::endl;
   }
   std::cout << std::endl;

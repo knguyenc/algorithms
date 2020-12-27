@@ -1,12 +1,13 @@
-#include <iostream>
-#include <tuple>
 #include <climits>
 #include <cstdint>
+#include <iostream>
+#include <tuple>
 
 namespace algorithms {
 namespace divide_conquer {
 
-std::tuple<int, int, int> MaxCrossingSubarray(const int *array, int low, int mid, int high) {
+std::tuple<int, int, int> MaxCrossingSubarray(const int *array, int low,
+                                              int mid, int high) {
   int l_sum = INT_MIN, r_sum = INT_MIN;
   int sum = 0, l_max = mid, r_max = mid + 1;
 
@@ -41,10 +42,14 @@ std::tuple<int, int, int> MaximumSubarray(const int *array, int low, int high) {
 
   std::tuple<int, int, int> l_tuple = MaximumSubarray(array, low, mid);
   std::tuple<int, int, int> r_tuple = MaximumSubarray(array, mid + 1, high);
-  std::tuple<int, int, int> c_tuple = MaxCrossingSubarray(array, low, mid, high);
+  std::tuple<int, int, int> c_tuple =
+      MaxCrossingSubarray(array, low, mid, high);
 
-  if (std::get<2>(l_tuple) >= std::get<2>(r_tuple) && std::get<2>(l_tuple) >= std::get<2>(c_tuple)) return l_tuple;
-  if (std::get<2>(r_tuple) >= std::get<2>(l_tuple) && std::get<2>(r_tuple) >= std::get<2>(c_tuple))
+  if (std::get<2>(l_tuple) >= std::get<2>(r_tuple) &&
+      std::get<2>(l_tuple) >= std::get<2>(c_tuple))
+    return l_tuple;
+  if (std::get<2>(r_tuple) >= std::get<2>(l_tuple) &&
+      std::get<2>(r_tuple) >= std::get<2>(c_tuple))
     return r_tuple;
   else
     return c_tuple;
@@ -54,8 +59,10 @@ std::tuple<int, int, int> MaximumSubarray(const int *array, int low, int high) {
 }  // namespace algorithms
 
 int main() {
-  int arr[16] = {12, -2, -23, 18, -1, -14, -21, 16, 19, -5, 10, -3, -20, 13, -4, -7};
-  std::tuple<int, int, int> ret = algorithms::divide_conquer::MaximumSubarray(arr, 0, sizeof(arr) / sizeof(*arr));
+  int arr[16] = {12, -2, -23, 18, -1,  -14, -21, 16,
+                 19, -5, 10,  -3, -20, 13,  -4,  -7};
+  std::tuple<int, int, int> ret = algorithms::divide_conquer::MaximumSubarray(
+      arr, 0, sizeof(arr) / sizeof(*arr));
 
   std::cout << "Start: " << std::get<0>(ret) << std::endl;  // 7
   std::cout << "End: " << std::get<1>(ret) << std::endl;    // 10

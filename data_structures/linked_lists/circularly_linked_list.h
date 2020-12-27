@@ -27,7 +27,8 @@ class CircularlyLinkedList {
   void Insert(const T &data);
   T Remove(const T &data);
 
-  friend std::ostream &operator<<(std::ostream &out, const CircularlyLinkedList &list) {
+  friend std::ostream &operator<<(std::ostream &out,
+                                  const CircularlyLinkedList &list) {
     if (list.IsEmpty()) {
       out << "Empty list";
     } else {

@@ -24,8 +24,8 @@ class Heap {
     int break_line = 0;
     for (int i = 0; i < heap.size_ / 2; i++) {
       if (i == 0) out << "(" << heap.data_[i] << " [" << i << "])" << std::endl;
-      out << "(" << heap.data_[heap.Left(i)] << " [" << heap.Left(i) << "]) (" << heap.data_[heap.Right(i)] << " ["
-          << heap.Right(i) << "])";
+      out << "(" << heap.data_[heap.Left(i)] << " [" << heap.Left(i) << "]) ("
+          << heap.data_[heap.Right(i)] << " [" << heap.Right(i) << "])";
       if (i == break_line) {
         out << std::endl;
         break_line = 2 * break_line + 2;
@@ -54,10 +54,12 @@ class Heap {
 };
 
 template <class T>
-Heap<T>::Heap() : data_(new T[DEFAULT_CAPACITY]), size_(0), capacity_(DEFAULT_CAPACITY) {}
+Heap<T>::Heap()
+    : data_(new T[DEFAULT_CAPACITY]), size_(0), capacity_(DEFAULT_CAPACITY) {}
 
 template <class T>
-Heap<T>::Heap(int capacity) : data_(new T[capacity]), size_(0), capacity_(capacity) {}
+Heap<T>::Heap(int capacity)
+    : data_(new T[capacity]), size_(0), capacity_(capacity) {}
 
 template <class T>
 Heap<T>::~Heap() {

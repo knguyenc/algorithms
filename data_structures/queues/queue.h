@@ -34,7 +34,8 @@ class Queue {
         if (cond)
           cond = index >= queue.head_ && index < queue.tail_;
         else
-          cond = (index >= queue.head_ && index < queue.capacity_) || (index >= 0 && index < queue.tail_);
+          cond = (index >= queue.head_ && index < queue.capacity_) ||
+                 (index >= 0 && index < queue.tail_);
         if (!cond) break;
       }
     }
@@ -49,10 +50,15 @@ class Queue {
 };
 
 template <class T>
-Queue<T>::Queue() : data_(new T[DEFAULT_CAPACITY]), capacity_(DEFAULT_CAPACITY), head_(0), tail_(0) {}
+Queue<T>::Queue()
+    : data_(new T[DEFAULT_CAPACITY]),
+      capacity_(DEFAULT_CAPACITY),
+      head_(0),
+      tail_(0) {}
 
 template <class T>
-Queue<T>::Queue(int capacity) : data_(new T[capacity]), capacity_(capacity), head_(0), tail_(0) {}
+Queue<T>::Queue(int capacity)
+    : data_(new T[capacity]), capacity_(capacity), head_(0), tail_(0) {}
 
 template <class T>
 Queue<T>::~Queue() {

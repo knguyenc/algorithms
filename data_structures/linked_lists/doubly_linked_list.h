@@ -27,7 +27,8 @@ class DoublyLinkedList {
   void Insert(const T &data);
   T Remove(const T &data);
 
-  friend std::ostream &operator<<(std::ostream &out, const DoublyLinkedList &list) {
+  friend std::ostream &operator<<(std::ostream &out,
+                                  const DoublyLinkedList &list) {
     if (list.IsEmpty()) {
       out << "Empty list";
     } else {

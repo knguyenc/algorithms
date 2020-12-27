@@ -19,16 +19,19 @@ class MinPriorityQueue : public heaps::MinHeap<T> {
   void DecreaseKey(int index, const T &key);
   void Insert(const T &value);
 
-  friend std::ostream &operator<<(std::ostream &out, const MinPriorityQueue &queue) {
+  friend std::ostream &operator<<(std::ostream &out,
+                                  const MinPriorityQueue &queue) {
     out << "Queue: ";
-    for (int i = 0; i < queue.size_; i++) out << "(" << queue.data_[i] << " [" << i << "]) ";
+    for (int i = 0; i < queue.size_; i++)
+      out << "(" << queue.data_[i] << " [" << i << "]) ";
     return out;
   }
 };
 
 template <class T>
 template <size_t N>
-MinPriorityQueue<T>::MinPriorityQueue(const T (&array)[N]) : heaps::MinHeap<T>(array) {
+MinPriorityQueue<T>::MinPriorityQueue(const T (&array)[N])
+    : heaps::MinHeap<T>(array) {
   this->data_ = new T[N];
   this->capacity_ = N;
   this->size_ = 0;
@@ -37,7 +40,8 @@ MinPriorityQueue<T>::MinPriorityQueue(const T (&array)[N]) : heaps::MinHeap<T>(a
 
 template <class T>
 template <size_t N>
-MinPriorityQueue<T>::MinPriorityQueue(const T (&array)[N], int capacity) : heaps::MinHeap<T>(array, capacity) {
+MinPriorityQueue<T>::MinPriorityQueue(const T (&array)[N], int capacity)
+    : heaps::MinHeap<T>(array, capacity) {
   this->data_ = new T[capacity];
   this->capacity_ = capacity;
   this->size_ = 0;
@@ -57,7 +61,8 @@ T MinPriorityQueue<T>::ExtractMin() {
 
 template <class T>
 void MinPriorityQueue<T>::DecreaseKey(int index, const T &key) {
-  if (key > this->data_[index]) throw std::runtime_error("New key is larger than current key");
+  if (key > this->data_[index])
+    throw std::runtime_error("New key is larger than current key");
   this->data_[index] = key;
   while (index > 0 && this->data_[this->Parent(index)] > this->data_[index]) {
     this->Swap(index, this->Parent(index));

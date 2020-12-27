@@ -1,4 +1,5 @@
 #include <algorithm>
+
 #include "sorting_util.h"
 
 namespace algorithms {
@@ -6,8 +7,10 @@ namespace sorting {
 
 template <class T, size_t N>
 void CountingSort(T (&array)[N], T key) {
-  if (!std::is_same<T, unsigned int>::value && !std::is_same<T, unsigned char>::value)
-    throw std::runtime_error("Only accept non-negative integer or character array.");
+  if (!std::is_same<T, unsigned int>::value &&
+      !std::is_same<T, unsigned char>::value)
+    throw std::runtime_error(
+        "Only accept non-negative integer or character array.");
 
   T *output = new T[N];
   T *auxiliary = new T[key + 1];
@@ -33,11 +36,13 @@ int main() {
   unsigned int integers[11] = {6, 8, 10, 26, 9, 2, 40, 22, 5, 32, 3};
   unsigned char chars[8] = {'d', 'g', 'a', 'b', 'j', 'y', 'h', 'k'};
 
-  algorithms::sorting::CountingSort(integers, *(std::max_element(integers, integers + 11)));
+  algorithms::sorting::CountingSort(
+      integers, *(std::max_element(integers, integers + 11)));
   std::cout << "Sorted integer array: ";
   algorithms::sorting::PrintArray(integers);  // 2 3 5 6 8 9 10 22 26 32 40
 
-  algorithms::sorting::CountingSort(chars, *(std::max_element(chars, chars + 8)));
+  algorithms::sorting::CountingSort(chars,
+                                    *(std::max_element(chars, chars + 8)));
   std::cout << "Sorted character array: ";
   algorithms::sorting::PrintArray(chars);  // a b d g h j k y
 

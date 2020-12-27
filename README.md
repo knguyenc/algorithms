@@ -28,7 +28,7 @@ $ make
 ```
 3. All binary files are located inside __build/bin/__ directory.
 
-Using `clang` of `gcc` compiler:
+Using `clang` or `gcc` compiler:
 1. Compile your desired file by compiler:
 ```shell script
 $ clang++ {path_to_source_file} -o {path_to_output_file}

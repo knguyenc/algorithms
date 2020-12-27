@@ -23,7 +23,8 @@ int main() {
   std::cout << algorithms::mathematics::BinaryFibonacci(6) << std::endl;  // 8
 
   std::cout << "Linear fibonacci: ";
-  std::cout << std::get<0>(algorithms::mathematics::LinearFibonacci(6)) << std::endl;  // 8
+  std::cout << std::get<0>(algorithms::mathematics::LinearFibonacci(6))
+            << std::endl;  // 8
 
   return 0;
 }

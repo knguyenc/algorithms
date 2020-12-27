@@ -19,7 +19,8 @@ class BinaryTree {
     Node *left_;
     Node *right_;
     friend class BinaryTree;
-    explicit Node(const T &data) : data_(data), parent_(NULL), left_(NULL), right_(NULL) {}
+    explicit Node(const T &data)
+        : data_(data), parent_(NULL), left_(NULL), right_(NULL) {}
   };
 
  public:
@@ -110,7 +111,8 @@ const typename BinaryTree<T>::Node *BinaryTree<T>::Search(const T &data) const {
 }
 
 template <class T>
-typename BinaryTree<T>::Node *BinaryTree<T>::Search(BinaryTree::Node *node, const T &data) const {
+typename BinaryTree<T>::Node *BinaryTree<T>::Search(BinaryTree::Node *node,
+                                                    const T &data) const {
   if (node == NULL || node->data_ == data) return node;
   Node *left_search = Search(node->left_, data);
   if (left_search != NULL) return left_search;
@@ -189,7 +191,8 @@ int BinaryTree<T>::Height(BinaryTree::Node *node) const {
 }
 
 template <class T>
-void BinaryTree<T>::PreOrder(std::ostream &out, BinaryTree::Node *node, bool recursive) const {
+void BinaryTree<T>::PreOrder(std::ostream &out, BinaryTree::Node *node,
+                             bool recursive) const {
   if (recursive) {
     if (node == NULL) return;
     out << "[" << node->data_ << "]->";
@@ -213,7 +216,8 @@ void BinaryTree<T>::PreOrder(std::ostream &out, BinaryTree::Node *node, bool rec
 }
 
 template <class T>
-void BinaryTree<T>::InOrder(std::ostream &out, BinaryTree::Node *node, bool recursive) const {
+void BinaryTree<T>::InOrder(std::ostream &out, BinaryTree::Node *node,
+                            bool recursive) const {
   if (recursive) {
     if (node == NULL) return;
     InOrder(out, node->left_, recursive);
@@ -237,7 +241,8 @@ void BinaryTree<T>::InOrder(std::ostream &out, BinaryTree::Node *node, bool recu
 }
 
 template <class T>
-void BinaryTree<T>::PostOrder(std::ostream &out, BinaryTree::Node *node, bool recursive) const {
+void BinaryTree<T>::PostOrder(std::ostream &out, BinaryTree::Node *node,
+                              bool recursive) const {
   if (recursive) {
     if (node == NULL) return;
     PostOrder(out, node->left_, recursive);
@@ -253,7 +258,8 @@ void BinaryTree<T>::PostOrder(std::ostream &out, BinaryTree::Node *node, bool re
         temp = temp->left_;
       }
       temp = stack.Pop();
-      if (!stack.IsEmpty() && temp->right_ != NULL && stack.Top() == temp->right_) {
+      if (!stack.IsEmpty() && temp->right_ != NULL &&
+          stack.Top() == temp->right_) {
         stack.Pop();
         stack.Push(temp);
         temp = temp->right_;
@@ -283,7 +289,8 @@ void BinaryTree<T>::LevelOrder(std::ostream &out, bool recursive) const {
 }
 
 template <class T>
-void BinaryTree<T>::PrintLevel(std::ostream &out, BinaryTree::Node *node, int level) const {
+void BinaryTree<T>::PrintLevel(std::ostream &out, BinaryTree::Node *node,
+                               int level) const {
   if (node == NULL) return;
   if (level == 1)
     out << "[" << node->data_ << "]->";

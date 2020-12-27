@@ -38,10 +38,12 @@ class Stack {
 };
 
 template <class T>
-Stack<T>::Stack() : data_(new T[DEFAULT_CAPACITY]), capacity_(DEFAULT_CAPACITY), top_(-1) {}
+Stack<T>::Stack()
+    : data_(new T[DEFAULT_CAPACITY]), capacity_(DEFAULT_CAPACITY), top_(-1) {}
 
 template <class T>
-Stack<T>::Stack(int capacity) : data_(new T[capacity]), capacity_(capacity), top_(-1) {}
+Stack<T>::Stack(int capacity)
+    : data_(new T[capacity]), capacity_(capacity), top_(-1) {}
 
 template <class T>
 Stack<T>::~Stack() {

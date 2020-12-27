@@ -48,8 +48,11 @@ void MinHeap<T>::BuildHeap() {
 template <class T>
 void MinHeap<T>::Heapify(int index) {
   int left = this->Left(index), right = this->Right(index), smallest;
-  smallest = (left < this->size_ && this->data_[left] < this->data_[index]) ? left : index;
-  if (right < this->size_ && this->data_[right] < this->data_[smallest]) smallest = right;
+  smallest = (left < this->size_ && this->data_[left] < this->data_[index])
+                 ? left
+                 : index;
+  if (right < this->size_ && this->data_[right] < this->data_[smallest])
+    smallest = right;
   if (smallest != index) {
     this->Swap(index, smallest);
     Heapify(smallest);

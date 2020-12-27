@@ -23,12 +23,15 @@ class HashTableOpenAddressing {
   void Insert(K key, V value);
   V Remove(K key);
 
-  friend std::ostream &operator<<(std::ostream &out, const HashTableOpenAddressing &hash_table) {
+  friend std::ostream &operator<<(std::ostream &out,
+                                  const HashTableOpenAddressing &hash_table) {
     if (hash_table.IsEmpty())
       out << "Empty hash table";
     else {
       for (int i = 0; i < hash_table.capacity_; i++)
-        if (hash_table.keys_[i] != NULL) out << "(" << *hash_table.keys_[i] << ": " << *hash_table.values_[i] << ") ";
+        if (hash_table.keys_[i] != NULL)
+          out << "(" << *hash_table.keys_[i] << ": " << *hash_table.values_[i]
+              << ") ";
     }
     return out;
   }
@@ -46,7 +49,10 @@ class HashTableOpenAddressing {
 
 template <class K, class V>
 HashTableOpenAddressing<K, V>::HashTableOpenAddressing()
-    : keys_(new K *[DEFAULT_CAPACITY]), values_(new V *[DEFAULT_CAPACITY]), capacity_(DEFAULT_CAPACITY), size_(0) {
+    : keys_(new K *[DEFAULT_CAPACITY]),
+      values_(new V *[DEFAULT_CAPACITY]),
+      capacity_(DEFAULT_CAPACITY),
+      size_(0) {
   for (int i = 0; i < capacity_; i++) {
     keys_[i] = NULL;
     values_[i] = NULL;
@@ -55,7 +61,10 @@ HashTableOpenAddressing<K, V>::HashTableOpenAddressing()
 
 template <class K, class V>
 HashTableOpenAddressing<K, V>::HashTableOpenAddressing(int capacity)
-    : keys_(new K *[capacity]), values_(new V *[capacity]), capacity_(capacity), size_(0) {
+    : keys_(new K *[capacity]),
+      values_(new V *[capacity]),
+      capacity_(capacity),
+      size_(0) {
   for (int i = 0; i < capacity_; i++) {
     keys_[i] = NULL;
     values_[i] = NULL;
@@ -106,14 +115,16 @@ V HashTableOpenAddressing<K, V>::Get(K key) const {
   int index;
   for (index = 0; index < capacity_; index++)
     if (keys_[index] != NULL && *keys_[index] == key) break;
-  if (index > capacity_ - 1) throw std::runtime_error("Key is not exist in this hash table");
+  if (index > capacity_ - 1)
+    throw std::runtime_error("Key is not exist in this hash table");
   return *values_[index];
 }
 
 template <class K, class V>
 void HashTableOpenAddressing<K, V>::Insert(K key, V value) {
   for (int i = 0; i < capacity_; i++)
-    if (keys_[i] != NULL && *keys_[i] == key) throw std::runtime_error("Key is already exist");
+    if (keys_[i] != NULL && *keys_[i] == key)
+      throw std::runtime_error("Key is already exist");
   int hash = Hashing(key);
   if (keys_[hash] != NULL) hash = Rehashing();
   keys_[hash] = new K;

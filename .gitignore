@@ -3,3 +3,8 @@
 
 # Output dir
 build/
+out/
+
+# Visual Studio
+.vs/
+CMakeSettings.json

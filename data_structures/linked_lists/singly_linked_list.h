@@ -8,9 +8,9 @@ namespace linked_lists {
 
 /**
  * Linked List is a linear data structure. Unlike arrays, linked list elements
- *  are not stored at a contiguous location the elements are linked using pointers.
- *  Singly linked list is represented by a pointer to the first node called head, if
- *  linked list is empty then the value of head is NULL (None).
+ *  are not stored at a contiguous location the elements are linked using
+ * pointers. Singly linked list is represented by a pointer to the first node
+ * called head, if linked list is empty then the value of head is NULL (None).
  *  Each node of a singly linked list contains 2 parts:
  *  - Stored data
  *  - Pointer to the next node (or reference)
@@ -38,7 +38,8 @@ class SinglyLinkedList {
   void Insert(const T &data);
   T Remove(const T &data);
 
-  friend std::ostream &operator<<(std::ostream &out, const SinglyLinkedList &list) {
+  friend std::ostream &operator<<(std::ostream &out,
+                                  const SinglyLinkedList &list) {
     if (list.IsEmpty()) {
       out << "Empty list";
     } else {

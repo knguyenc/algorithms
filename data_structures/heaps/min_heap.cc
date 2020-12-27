@@ -3,7 +3,8 @@
 int main() {
   std::cout << "TEST MIN HEAP\n" << std::endl;
   int integers[] = {6, 8, 10, 26, 9, 2, 40, 22, 5, 32, 3};
-  std::string strings[] = {"c", "java", "cpp", "python", "go", "swift", "objective-c"};
+  std::string strings[] = {"c",  "java",  "cpp",        "python",
+                           "go", "swift", "objective-c"};
 
   data_structures::heaps::MinHeap<int> int_min_heap(integers, 20);
   data_structures::heaps::MinHeap<std::string> str_min_heap(strings, 20);
