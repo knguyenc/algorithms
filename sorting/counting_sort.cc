@@ -15,10 +15,10 @@ void CountingSort(T (&array)[N], T key) {
   T *output = new T[N];
   T *auxiliary = new T[key + 1];
 
-  for (unsigned int i = 0; i < key + 1; i++) auxiliary[i] = 0;
+  for (unsigned int i = 0; i < (unsigned int) (key + 1); i++) auxiliary[i] = 0;
   for (T element : array) auxiliary[element]++;
 
-  for (unsigned int i = 1; i < key + 1; i++) auxiliary[i] += auxiliary[i - 1];
+  for (unsigned int i = 1; i < (unsigned int) (key + 1); i++) auxiliary[i] += auxiliary[i - 1];
   for (int i = N - 1; i >= 0; i--) {
     output[auxiliary[array[i]] - 1] = array[i];
     auxiliary[array[i]]--;
