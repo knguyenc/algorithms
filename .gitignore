@@ -3,8 +3,8 @@
 
 # Output dir
 build/
-out/
 
-# Visual Studio
-.vs/
-CMakeSettings.json
+# GNU Global
+GPATH
+GRTAGS
+GTAGS
