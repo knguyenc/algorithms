@@ -49,7 +49,7 @@ void BucketSort(T (&array)[N]) {
           "1).");
   constexpr unsigned int slots = 10;
   std::vector<T> buckets[slots];
-  for (unsigned int i = 0; i < slots; i++) {
+  for (unsigned int i = 0; i < N; i++) {
     int bucket_index = slots * array[i];
     buckets[bucket_index].push_back(array[i]);
   }
