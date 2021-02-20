@@ -25,8 +25,9 @@ bool RatInMazeRecursive(const int (&board)[N][N], int (&out)[N][N], int x,
 }
 
 void RatInMaze() {
-  int board[4][4] = {{1, 0, 0, 0}, {1, 1, 0, 1}, {0, 1, 0, 0}, {1, 1, 1, 1}};
-  int out[4][4] = {};
+  const unsigned int n = 4;
+  int board[n][n] = {{1, 0, 0, 0}, {1, 1, 0, 1}, {0, 1, 0, 0}, {1, 1, 1, 1}};
+  int out[n][n] = {};
   if (RatInMazeRecursive(board, out, 0, 0))
     PrintMatrix(out);
   else

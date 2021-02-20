@@ -31,10 +31,10 @@ bool KnightTourRecursive(int (&board)[N][N], const int (&x_mv)[8],
 }
 
 void KnightTour() {
-  const int n = 8;
+  const unsigned int n = 8;
   int board[n][n];
-  for (int i = 0; i < n; i++)
-    for (int j = 0; j < n; j++) board[i][j] = -1;
+  for (unsigned int i = 0; i < n; i++)
+    for (unsigned int j = 0; j < n; j++) board[i][j] = -1;
 
   int x_move[] = {2, 1, -1, -2, -2, -1, 2, 1};
   int y_move[] = {1, 2, 2, 1, -1, -2, -1, -2};

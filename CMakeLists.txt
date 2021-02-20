@@ -49,6 +49,7 @@ add_executable(maximum_subarray divide_conquer/maximum_subarray.cc)
 
 add_executable(knight_tour backtracking/knight_tour.cc)
 add_executable(rat_in_maze backtracking/rat_in_maze.cc)
+add_executable(n_queen backtracking/n_queen.cc)
 
 add_executable(ugly_numbers dynamic_programming/ugly_numbers.cc)
 add_executable(fibonacci_numbers dynamic_programming/fibonacci_numbers.cc)
