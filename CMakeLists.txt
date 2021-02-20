@@ -43,6 +43,7 @@ add_executable(binary_search searching/binary_search.cc)
 
 add_executable(fibonacci mathematics/fibonacci.cc)
 add_executable(factorial mathematics/factorial.cc)
+add_executable(catalan mathematics/catalan.cc)
 
 add_executable(maximum_subarray divide_conquer/maximum_subarray.cc)
 
@@ -50,3 +51,5 @@ add_executable(knight_tour backtracking/knight_tour.cc)
 add_executable(rat_in_maze backtracking/rat_in_maze.cc)
 
 add_executable(ugly_numbers dynamic_programming/ugly_numbers.cc)
+add_executable(fibonacci_numbers dynamic_programming/fibonacci_numbers.cc)
+add_executable(catalan_numbers dynamic_programming/catalan_numbers.cc)
