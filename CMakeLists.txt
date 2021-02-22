@@ -56,3 +56,4 @@ add_executable(fibonacci_numbers dynamic_programming/fibonacci_numbers.cc)
 add_executable(catalan_numbers dynamic_programming/catalan_numbers.cc)
 
 add_executable(naive_pattern_searching pattern_searching/naive_pattern_searching.cc)
+add_executable(kmp_pattern_searching pattern_searching/kmp_pattern_searching.cc)
