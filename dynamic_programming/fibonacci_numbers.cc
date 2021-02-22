@@ -15,12 +15,10 @@ unsigned int FibonacciNumber(unsigned int n) {
 }  // namespace dynamic_programming
 }  // namespace algorithms
 
-int main()
-{
+int main() {
   int n = 6;
   std::cout << "The " << n << "th fibonacci number is: ";
   std::cout << algorithms::dynamic_programming::FibonacciNumber(n);
   std::cout << std::endl;
   return 0;
 }
-

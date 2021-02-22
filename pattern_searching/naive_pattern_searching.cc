@@ -13,19 +13,16 @@ void NaivePatternSearching(const char (&text)[N], const char (&pattern)[M]) {
         break;
       }
     }
-    if (matched)
-      std::cout << "Pattern found at index " << i << std::endl;
+    if (matched) std::cout << "Pattern found at index " << i << std::endl;
   }
 }
 
 }  // namespace pattern_searching
 }  // namespace algorithms
 
-int main()
-{
+int main() {
   char text[] = "AABAACAADAABAAABAA";
   char pattern[] = "AABA";
   algorithms::pattern_searching::NaivePatternSearching(text, pattern);
   return 0;
 }
-

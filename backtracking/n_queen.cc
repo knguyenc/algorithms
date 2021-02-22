@@ -44,9 +44,7 @@ void NQueen() {
 }  // namespace backtracking
 }  // namespace algorithms
 
-int main()
-{
+int main() {
   algorithms::backtracking::NQueen();
   return 0;
 }
-

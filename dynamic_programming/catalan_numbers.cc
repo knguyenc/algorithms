@@ -17,12 +17,10 @@ unsigned int CatalanNumber(unsigned int n) {
 }  // namespace dynamic_programming
 }  // namespace algorithms
 
-int main()
-{
+int main() {
   int n = 9;
   std::cout << "The " << n << "th catalan number is: ";
   std::cout << algorithms::dynamic_programming::CatalanNumber(n);
   std::cout << std::endl;
   return 0;
 }
-
