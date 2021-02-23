@@ -1,8 +1,13 @@
 # OSX system
 .DS_Store
 
+# Visual Studio
+.vs/
+.vscode/
+
 # Output dir
 build/
+out/
 
 # GNU Global
 GPATH
