@@ -8,6 +8,7 @@
 # Output dir
 build/
 out/
+target/
 
 # GNU Global
 GPATH
