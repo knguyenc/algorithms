@@ -5,6 +5,10 @@
 .vs/
 .vscode/
 
+# IntelliJ IDEA
+.idea/
+*.iml
+
 # Output dir
 build/
 out/
