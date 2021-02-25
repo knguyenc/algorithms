@@ -92,4 +92,6 @@ TBA
 
 ## References
 [C++ Documentation](https://isocpp.org/) \
-[CMake Documentation](https://cmake.org/documentation/)
+[CMake Documentation](https://cmake.org/documentation/) \
+[Java Documentation](https://docs.oracle.com/en/java/) \
+[Maven Documentation](https://maven.apache.org/guides/index.html)
