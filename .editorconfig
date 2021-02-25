@@ -16,5 +16,8 @@ indent_size = 4
 [*.h, *.cc]
 indent_size = 2
 
+[*.java, *.xml]
+indent_size = 4
+
 [*.md]
 indent_size = 2
