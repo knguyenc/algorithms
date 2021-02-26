@@ -18,9 +18,9 @@ $ cd algorithms
 
 ## Build and run C++
 Using CMake:
-1. Create __build__ directory inside __algorithms/cpp__ folder:
+1. Create __build__ directory inside __algorithms/cc__ folder:
 ```shell script
-$ cd cpp
+$ cd cc
 $ mkdir build
 $ cd build
 ```

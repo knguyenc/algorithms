@@ -54,6 +54,9 @@ add_executable(n_queen backtracking/n_queen.cc)
 add_executable(ugly_numbers dynamic_programming/ugly_numbers.cc)
 add_executable(fibonacci_numbers dynamic_programming/fibonacci_numbers.cc)
 add_executable(catalan_numbers dynamic_programming/catalan_numbers.cc)
+add_executable(zero_one_knapsack dynamic_programming/zero_one_knapsack.cc)
 
 add_executable(naive_pattern_searching pattern_searching/naive_pattern_searching.cc)
 add_executable(kmp_pattern_searching pattern_searching/kmp_pattern_searching.cc)
+
+add_executable(fractional_knapsack greedy/fractional_knapsack.cc)
