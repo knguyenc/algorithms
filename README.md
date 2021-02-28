@@ -66,7 +66,7 @@ $ mvn compile
 ```
 2. All compiled classes locate inside _target/classes/_ directory. Use `java` to execute desired class.
 ```shell script
-$ java {path_to_class_file}
+$ java -cp target/classes {path_to_class_file_include_package_name}
 ```
 3. Run unit testing by `mvn test` command:
 ```shell script
@@ -84,7 +84,7 @@ $ javac -d target/classes {path_to_source_file}
 ```
 2. Then run the compiled class file:
 ```shell script
-$ java {path_to_class_file}
+$ java -cp target/classes {path_to_class_file_include_package_name}
 ```
 
 ## Algorithms explanation
